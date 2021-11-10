@@ -23,8 +23,8 @@ const Navbar = () => {
               </NavLink>
               <div className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/">Drones</NavLink>
-                <NavLink to="/">Admin</NavLink>
+                <NavLink to="/drones">Drones</NavLink>
+                {user?.email && <NavLink to="/dashboard">Dashboard</NavLink>}
                 <NavLink to="/">Pricing</NavLink>
               </div>
               <div className="hidden xl:flex items-center space-x-5">
@@ -32,7 +32,7 @@ const Navbar = () => {
                   <>
                     <button
                       to="/login"
-                      className="inline-block py-2 px-8 mx-2 rounded-full text-indigo-100 transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-600 border border-transparent"
+                      className="inline-block py-2 px-8 mx-2 rounded-full text-white transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-600 border border-transparent"
                       onClick={() => {
                         logOut();
                       }}
@@ -104,21 +104,21 @@ const Navbar = () => {
                   <NavLink to="/" className="py-1 px-4">
                     Home
                   </NavLink>
-                  <NavLink to="/" className="py-1 px-4">
-                    Teachers
+                  <NavLink to="/drones" className="py-1 px-4">
+                    Drones
+                  </NavLink>
+                  <NavLink to="/dashboard" className="py-1 px-4">
+                    Dasboard
                   </NavLink>
                   <NavLink to="/" className="py-1 px-4">
-                    Classes
-                  </NavLink>
-                  <NavLink to="/" className="py-1 px-4">
-                    House
+                    Pricing
                   </NavLink>
                 </div>
                 {user?.email ? (
                   <>
                     <button
                       to="/login"
-                      className="inline-block py-2 px-8 mx-2 rounded-full text-indigo-100 transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-600 border border-transparent"
+                      className="inline-block py-2 px-8 mx-2 rounded-full text-white transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-600 border border-transparent"
                       onClick={() => {
                         logOut();
                       }}

@@ -1,18 +1,17 @@
 import React from "react";
 import { Redirect, Route } from "react-router";
-import UseAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const { user, isLoading } = UseAuth();
-
-  if (isLoading) {
+  const { user, loading } = useAuth();
+  if (loading) {
     return (
-      <div className="text-center box-wrapper">
+      <div className="text-center w-full h-full absolute flex items-center justify-center">
         {/* <div className="spinner-border text-primary mx-auto" role="status">
           <span className="visually-hidden">Loading...</span>
         </div> */}
         <img
-          src="https://i.ibb.co/WtMm1Wz/loading-paper-airplane.gif"
+          src="https://i.ibb.co/VtWDJq1/loading.gif"
           alt="Loader"
           className="w-100"
         />

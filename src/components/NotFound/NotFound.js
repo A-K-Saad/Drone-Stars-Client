@@ -17,7 +17,7 @@ const NotFound = () => {
             Seems like there's nothing to show here!
           </h6>
           <Link to="/">
-            <button className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 mt-6">
+            <button className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-6">
               Back to Home
             </button>
           </Link>
