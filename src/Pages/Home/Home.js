@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Banner></Banner>
       <div className="py-10 text-center">
-        <Products></Products>
+        <Products quantity={6}></Products>
         <Reviews></Reviews>
       </div>
     </>

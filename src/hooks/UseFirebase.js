@@ -83,6 +83,16 @@ const UseFirebase = () => {
     //   sweetAlert("error", "OOPS!", errorMessage, false);
     // });
   };
+  const saveUser = (email, displayName, method) => {
+    const user = { email: email, displayName: displayName, role: "user" };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+  };
 
   return {
     user,
@@ -94,6 +104,7 @@ const UseFirebase = () => {
     signup,
     emailSignin,
     setUser,
+    saveUser,
   };
 };
 

@@ -32,7 +32,7 @@ const Navbar = () => {
                   <>
                     <button
                       to="/login"
-                      className="inline-block py-2 px-8 mx-2 rounded-full text-white transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-600 border border-transparent"
+                      className="inline-block py-2 px-5 mx-2 rounded-full text-white transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-600 border border-transparent"
                       onClick={() => {
                         logOut();
                       }}

@@ -1,6 +1,6 @@
 import { getAuth, updateProfile } from "@firebase/auth";
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import Alert from "../../hooks/Alert";
 import useAuth from "../../hooks/useAuth";
@@ -12,9 +12,10 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [chosenFile, setChosenFile] = useState();
   const [isPassVisible, setIsPassVisible] = useState(false);
-  const { signup, setUser, signInWithGoogle, setLoading } = useAuth();
+  const { signup, setUser, signInWithGoogle, setLoading, saveUser } = useAuth();
   const { sweetAlert } = Alert();
   const history = useHistory();
+  const location = useLocation();
 
   const createUserHandler = async (e) => {
     const auth = getAuth();
@@ -32,7 +33,7 @@ const Signup = () => {
 
     const signUpWithEmail = () => {
       //Sign Up
-      signup(name, email, password, data.data.thumb.url)
+      signup(name, email, password, data.data.url)
         .then((userCredential) => {
           updateProfile(auth.currentUser, {
             displayName: name,
@@ -42,7 +43,8 @@ const Signup = () => {
             setUser(userCredential.user);
           });
           sweetAlert("success", "Success", "Signed Up Successfully!", false);
-          history.push("/");
+          saveUser(email, name, "POST");
+          history.push("/dashboard");
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -62,7 +64,8 @@ const Signup = () => {
     signInWithGoogle()
       .then((result) => {
         setUser(result.user);
-        history.push("/");
+        saveUser(email, name, "PUT");
+        history.push(location?.state?.from || "/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -126,7 +129,7 @@ const Signup = () => {
             />
             <i
               className={`fas cursor-pointer absolute top-0 bottom-0 m-auto right-0 items-center d-flex text-gray-700 mr-4 ${
-                isPassVisible ? "fa-eye-slash" : "fa-eye"
+                isPassVisible ? "fa-eye" : "fa-eye-slash"
               }`}
               onClick={() => setIsPassVisible(!isPassVisible)}
             ></i>

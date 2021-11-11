@@ -9,7 +9,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       {/* Sidebar starts */}
       {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
       <div
-        className={`md:w-1/5 absolute sm:relative bg-white shadow md:h-full flex-col justify-between sm:flex min-h-screen ${
+        className={`md:w-1/5 absolute sm:relative z-40 bg-white shadow md:h-full flex-col justify-between sm:flex min-h-screen ${
           isMenuOpen ? "flex w-auto" : "hidden"
         }`}
       >
@@ -73,7 +73,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
             </NavLink>
             <NavLink
               exact
-              to={`${url}/add-products`}
+              to={`${url}/add-product`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
               activeClassName="text-blue-700 bg-blue-100"
             >

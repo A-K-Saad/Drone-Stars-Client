@@ -6,6 +6,7 @@ import NotFound from "./components/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./Contexts/AuthProvider";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import Drones from "./Pages/Drones/Drones";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
@@ -44,6 +45,11 @@ const App = () => {
               <PrivateRoute path="/dashboard">
                 <Dashboard></Dashboard>
               </PrivateRoute>
+              <Route exact path="/drones">
+                <FullContainer>
+                  <Drones></Drones>
+                </FullContainer>
+              </Route>
               <PrivateRoute path="*">
                 <FullContainer>
                   <NotFound></NotFound>

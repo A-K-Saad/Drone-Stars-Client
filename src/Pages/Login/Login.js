@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Alert from "../../hooks/Alert";
 
@@ -8,8 +8,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPassVisible, setIsPassVisible] = useState(false);
-  const { signInWithGoogle, setUser, setLoading, emailSignin } = useAuth();
+  const { signInWithGoogle, setUser, setLoading, emailSignin, saveUser } =
+    useAuth();
   const history = useHistory();
+  const location = useLocation();
   const { sweetAlert } = Alert();
 
   const submitLogin = (e) => {
@@ -20,7 +22,8 @@ const Login = () => {
         const user = userCredential.user;
         sweetAlert("success", "Success", "Logged In SuccessFully", false);
         setUser(user);
-        history.push("/");
+        saveUser(email, user?.displayName, "PUT");
+        history.push(location?.state.from || "/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -32,7 +35,8 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         setUser(result.user);
-        history.push("/");
+        saveUser(result.user.email, result.user.displayName, "POST");
+        history.push(location?.state.from || "/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -82,7 +86,7 @@ const Login = () => {
             />
             <i
               className={`fas cursor-pointer absolute top-0 bottom-0 m-auto right-0 items-center d-flex text-gray-700 mr-4 ${
-                isPassVisible ? "fa-eye-slash" : "fa-eye"
+                isPassVisible ? "fa-eye" : "fa-eye-slash"
               }`}
               onClick={() => setIsPassVisible(!isPassVisible)}
             ></i>
