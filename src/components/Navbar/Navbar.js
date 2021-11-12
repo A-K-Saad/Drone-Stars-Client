@@ -50,7 +50,7 @@ const Navbar = () => {
                         e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
                       }}
                       alt="Avatar"
-                      className="rounded-full p-0"
+                      className="rounded-full p-0 w-10 border border-gray-300"
                     />
                   </>
                 ) : (
@@ -136,7 +136,7 @@ const Navbar = () => {
                         e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
                       }}
                       alt="Avatar"
-                      className="rounded-full p-0"
+                      className="rounded-full p-0 w-10 border border-gray-300"
                     />
                   </>
                 ) : (

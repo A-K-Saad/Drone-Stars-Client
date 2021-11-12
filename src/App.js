@@ -9,6 +9,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Drones from "./Pages/Drones/Drones";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import Purchase from "./Pages/Purchase/Purchase";
 import Signup from "./Pages/Signup/Signup";
 
 const App = () => {
@@ -50,6 +51,11 @@ const App = () => {
                   <Drones></Drones>
                 </FullContainer>
               </Route>
+              <PrivateRoute path="/purchase/:droneId">
+                <FullContainer>
+                  <Purchase></Purchase>
+                </FullContainer>
+              </PrivateRoute>
               <PrivateRoute path="*">
                 <FullContainer>
                   <NotFound></NotFound>

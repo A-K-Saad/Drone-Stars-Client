@@ -7,9 +7,6 @@ const PrivateRoute = ({ children, ...rest }) => {
   if (loading) {
     return (
       <div className="text-center w-full h-full absolute flex items-center justify-center">
-        {/* <div className="spinner-border text-primary mx-auto" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div> */}
         <img
           src="https://i.ibb.co/VtWDJq1/loading.gif"
           alt="Loader"
@@ -23,7 +20,6 @@ const PrivateRoute = ({ children, ...rest }) => {
       <Route
         {...rest}
         render={({ location }) => {
-          //   currentUser?.email ? children : <Redirect to="/login"></Redirect>;
           if (user?.email) {
             return children;
           } else {

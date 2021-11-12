@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
   let { url } = useRouteMatch();
+  const { isAdmin } = useAuth();
 
   return (
     <>
@@ -49,37 +51,63 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
                 <span className="ml-2">Dashboard</span>
               </div>
             </NavLink>
+            {isAdmin && (
+              <>
+                <NavLink
+                  exact
+                  to={`${url}/manage-products`}
+                  className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
+                  activeClassName="text-blue-700 bg-blue-100"
+                >
+                  <div className="flex items-center">
+                    <i className="far fa-folder-open w-6"></i>
+                    <span className="ml-2">Manage Products</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  exact
+                  to={`${url}/manage-orders`}
+                  className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
+                  activeClassName="text-blue-700 bg-blue-100"
+                >
+                  <div className="flex items-center">
+                    <i className="fas fa-pallet w-6"></i>
+                    <span className="ml-2">Manage Orders</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  exact
+                  to={`${url}/manage-users`}
+                  className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
+                  activeClassName="text-blue-700 bg-blue-100"
+                >
+                  <div className="flex items-center">
+                    <i className="fas fa-user-shield w-6"></i>
+                    <span className="ml-2">Manage Users</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  exact
+                  to={`${url}/add-product`}
+                  className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
+                  activeClassName="text-blue-700 bg-blue-100"
+                >
+                  <div className="flex items-center">
+                    <i className="fas fa-plus-square w-6"></i>
+                    <span className="ml-2">Add Product</span>
+                  </div>
+                </NavLink>
+              </>
+            )}
             <NavLink
               exact
-              to={`${url}/manage-products`}
+              to={`${url}/my-orders`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
               activeClassName="text-blue-700 bg-blue-100"
             >
               <div className="flex items-center">
-                <i className="far fa-folder-open w-6"></i>
-                <span className="ml-2">Manage Products</span>
-              </div>
-            </NavLink>
-            <NavLink
-              exact
-              to={`${url}/manage-orders`}
-              className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
-              activeClassName="text-blue-700 bg-blue-100"
-            >
-              <div className="flex items-center">
-                <i className="fas fa-pallet w-6"></i>
-                <span className="ml-2">Manage Orders</span>
-              </div>
-            </NavLink>
-            <NavLink
-              exact
-              to={`${url}/add-product`}
-              className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
-              activeClassName="text-blue-700 bg-blue-100"
-            >
-              <div className="flex items-center">
-                <i className="fas fa-plus-square w-6"></i>
-                <span className="ml-2">Add Product</span>
+                <i className="fas fa-box-open w-6"></i>
+                <span className="ml-2">My Orders</span>
               </div>
             </NavLink>
             <NavLink
@@ -95,13 +123,13 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
             </NavLink>
             <NavLink
               exact
-              to={`${url}/review`}
+              to={`${url}/reviews`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
               activeClassName="text-blue-700 bg-blue-100"
             >
               <div className="flex items-center">
                 <i className="fas fa-comment-dots w-6"></i>
-                <span className="ml-2">Review</span>
+                <span className="ml-2">Reviews</span>
               </div>
             </NavLink>
           </ul>

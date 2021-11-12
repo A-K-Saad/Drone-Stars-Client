@@ -50,8 +50,8 @@ const AddProduct = () => {
   };
 
   return (
-    <>
-      <div className="flex items-center justify-center">
+    <div>
+      <div className="flex items-center justify-center p-9">
         <form
           onSubmit={handleProduct}
           className="m-auto bg-white p-7 sign-form shadow-sm"
@@ -159,7 +159,7 @@ const AddProduct = () => {
           )}
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

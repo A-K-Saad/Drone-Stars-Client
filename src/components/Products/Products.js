@@ -10,8 +10,8 @@ const Products = ({ quantity }) => {
       .then((res) => res.json())
       .then((data) => {
         setDrones(data);
-        setIsLoading(false);
       });
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {
@@ -28,7 +28,7 @@ const Products = ({ quantity }) => {
 
   return (
     <>
-      <div className="my-10 px-0 md:px-32">
+      <div className="my-10 px-2 md:px-32">
         <h1 className="text-3xl text-center mb-6">Explore Out Drones</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {drones?.slice(0, quantity).map((product) => (

@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 
 const Topbar = ({ setIsMenuOpen }) => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, primaryAvatar, primaryName } = useAuth();
 
   return (
     <>
@@ -15,7 +15,9 @@ const Topbar = ({ setIsMenuOpen }) => {
         </button>
         <div className="flex flex-col">
           <p className="text-gray-300 text-sm md:text-base">Welcome</p>
-          <p className="text-sm text-red-500 md:text-xl">{user?.displayName}</p>
+          <p className="text-sm text-red-500 md:text-xl">
+            {user?.displayName || primaryName}
+          </p>
         </div>
         <div className="flex items-center">
           <button
@@ -27,12 +29,16 @@ const Topbar = ({ setIsMenuOpen }) => {
             <span className="hidden md:inline">Sign Out</span>
           </button>
           <img
-            src={user?.photoURL || "https://i.ibb.co/qgbdqZ3/male.png"}
+            src={
+              user?.photoURL ||
+              primaryAvatar ||
+              "https://i.ibb.co/qgbdqZ3/male.png"
+            }
             onError={(e) => {
               e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
             }}
             alt="Avatar"
-            className="rounded-full p-0 w-10"
+            className="rounded-full p-0 w-10 border border-gray-300"
           />
         </div>
       </div>

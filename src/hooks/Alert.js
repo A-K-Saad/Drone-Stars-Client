@@ -6,7 +6,7 @@ const Alert = () => {
       icon: icon,
       title: title,
       text: text,
-      timer: 1500,
+      timer: 2000,
       showConfirmButton: showConfirm,
     });
   };

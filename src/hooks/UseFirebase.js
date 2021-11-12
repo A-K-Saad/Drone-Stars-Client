@@ -15,8 +15,12 @@ initializeAuthentication();
 
 const UseFirebase = () => {
   const [user, setUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [primaryAvatar, setPrimaryAvatar] = useState("");
+  const [primaryName, setPrimaryName] = useState("");
+  const [loadAdmin, setLoadAdmin] = useState(true);
+  const [checkAdmin, setCheckAdmin] = useState(false);
   const { sweetAlert } = Alert();
 
   const auth = getAuth();
@@ -38,6 +42,17 @@ const UseFirebase = () => {
     });
     return () => unsubscribed;
   }, [auth]);
+
+  useEffect(() => {
+    setLoadAdmin(true);
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAdmin(data.admin);
+        setCheckAdmin(false);
+        setLoadAdmin(false);
+      });
+  }, [user.email, checkAdmin]);
 
   const logOut = () => {
     signOut(auth)
@@ -68,6 +83,7 @@ const UseFirebase = () => {
   };
   const signup = async (name, email, password, avatar) => {
     setPrimaryAvatar(avatar);
+    setPrimaryName(name);
     return createUserWithEmailAndPassword(auth, email, password);
     // .then((userCredential) => {
     //   updateProfile(auth.currentUser, {
@@ -83,8 +99,13 @@ const UseFirebase = () => {
     //   sweetAlert("error", "OOPS!", errorMessage, false);
     // });
   };
-  const saveUser = (email, displayName, method) => {
-    const user = { email: email, displayName: displayName, role: "user" };
+  const saveUser = (email, displayName, avatar, method) => {
+    const user = {
+      email: email,
+      displayName: displayName,
+      role: "user",
+      avatar: avatar,
+    };
     fetch("http://localhost:5000/users", {
       method: method,
       headers: {
@@ -96,9 +117,12 @@ const UseFirebase = () => {
 
   return {
     user,
+    isAdmin,
     loading,
+    loadAdmin,
     setLoading,
     primaryAvatar,
+    primaryName,
     signInWithGoogle,
     logOut,
     signup,

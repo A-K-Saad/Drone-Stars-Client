@@ -22,7 +22,7 @@ const Login = () => {
         const user = userCredential.user;
         sweetAlert("success", "Success", "Logged In SuccessFully", false);
         setUser(user);
-        saveUser(email, user?.displayName, "PUT");
+        saveUser(user.email, user.displayName, user.photoURL, "PUT");
         history.push(location?.state.from || "/");
       })
       .catch((error) => {
@@ -34,8 +34,9 @@ const Login = () => {
   const googleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        setUser(result.user);
-        saveUser(result.user.email, result.user.displayName, "POST");
+        const user = result.user;
+        setUser(user);
+        saveUser(user.email, user.displayName, user.photoURL, "POST");
         history.push(location?.state.from || "/");
       })
       .catch((error) => {
@@ -63,7 +64,7 @@ const Login = () => {
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
-            type="text"
+            type="email"
             placeholder="severus@snape.com"
             autoComplete="off"
             required

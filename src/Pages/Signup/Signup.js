@@ -33,17 +33,18 @@ const Signup = () => {
 
     const signUpWithEmail = () => {
       //Sign Up
-      signup(name, email, password, data.data.url)
+      const image = data?.data?.url || "https://i.ibb.co/qgbdqZ3/male.png";
+      signup(name, email, password, image)
         .then((userCredential) => {
           updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL:
-              data.data.thumb.url || "https://i.ibb.co/qgbdqZ3/male.png",
+            photoURL: image,
           }).then(() => {
-            setUser(userCredential.user);
+            const user = userCredential.user;
+            setUser(user);
+            saveUser(user.email, user.displayName, user.photoURL, "POST");
           });
           sweetAlert("success", "Success", "Signed Up Successfully!", false);
-          saveUser(email, name, "POST");
           history.push("/dashboard");
         })
         .catch((error) => {
@@ -52,7 +53,7 @@ const Signup = () => {
         });
     };
     if (chosenFile) {
-      if (data.data.thumb.url) {
+      if (data?.data.url) {
         signUpWithEmail();
       }
     } else {
@@ -63,15 +64,15 @@ const Signup = () => {
   const googleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        setUser(result.user);
-        saveUser(email, name, "PUT");
+        const user = result.user;
+        setUser(user);
+        saveUser(user.email, user.displayName, user.photoURL, "PUT");
         history.push(location?.state?.from || "/");
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
 
-        console.log(`OOPS! Error ${errorCode}! ${errorMessage}`);
+        console.log(`OOPS! ${errorMessage}`);
       })
       .finally(() => setLoading(false));
   };
