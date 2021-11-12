@@ -25,7 +25,7 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/drones">Drones</NavLink>
                 {user?.email && <NavLink to="/dashboard">Dashboard</NavLink>}
-                <NavLink to="/">Pricing</NavLink>
+                <NavLink to="/reviews">Reviews</NavLink>
               </div>
               <div className="hidden xl:flex items-center space-x-5">
                 {user?.email ? (
@@ -110,8 +110,8 @@ const Navbar = () => {
                   <NavLink to="/dashboard" className="py-1 px-4">
                     Dasboard
                   </NavLink>
-                  <NavLink to="/" className="py-1 px-4">
-                    Pricing
+                  <NavLink to="/reviews" className="py-1 px-4">
+                    Reviews
                   </NavLink>
                 </div>
                 {user?.email ? (

@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Reviews from "./components/Reviews/Reviews";
 import AuthProvider from "./Contexts/AuthProvider";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Drones from "./Pages/Drones/Drones";
@@ -49,6 +50,11 @@ const App = () => {
               <Route exact path="/drones">
                 <FullContainer>
                   <Drones></Drones>
+                </FullContainer>
+              </Route>
+              <Route exact path="/reviews">
+                <FullContainer>
+                  <Reviews></Reviews>
                 </FullContainer>
               </Route>
               <PrivateRoute path="/purchase/:droneId">

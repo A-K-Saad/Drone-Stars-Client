@@ -123,13 +123,13 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
             </NavLink>
             <NavLink
               exact
-              to={`${url}/reviews`}
+              to={`${url}/add-review`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
               activeClassName="text-blue-700 bg-blue-100"
             >
               <div className="flex items-center">
                 <i className="fas fa-comment-dots w-6"></i>
-                <span className="ml-2">Reviews</span>
+                <span className="ml-2">Add A Review</span>
               </div>
             </NavLink>
           </ul>

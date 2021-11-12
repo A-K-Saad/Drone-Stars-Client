@@ -22,9 +22,9 @@ const Footer = () => {
           <div className="lg:w-1/3 flex flex-col space-y-3 space-x-0 text-center font-bold">
             <h5 className="text-xl">Quick Links:</h5>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/">Drones</NavLink>
-            <NavLink to="/">Admin</NavLink>
-            <NavLink to="/">Pricing</NavLink>
+            <NavLink to="/drones">Drones</NavLink>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/reviews">Reviews</NavLink>
           </div>
           <div className="lg:w-1/3 text-center text-3xl">
             <h5 className="font-bold text-lg">Social Media:</h5>

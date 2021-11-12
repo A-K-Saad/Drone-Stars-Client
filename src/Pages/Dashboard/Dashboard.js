@@ -4,15 +4,19 @@ import AdminRoute from "../../components/AdminRoute/AdminRoute";
 import NotFound from "../../components/NotFound/NotFound";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Topbar from "../../components/Topbar/Topbar";
+import useAuth from "../../hooks/useAuth";
 import AddProduct from "./AddProduct/AddProduct";
 import "./Dashboard.css";
 import ManageOrders from "./ManageOrders/ManageOrders";
 import ManageUsers from "./ManageUsers/ManageUsers";
 import MyOrders from "./MyOrders/MyOrders";
+import Payment from "./Payment/Payment";
+import AddReview from "./AddReview/AddReview";
 
 const Dashboard = () => {
   let { path } = useRouteMatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <>
@@ -30,7 +34,34 @@ const Dashboard = () => {
             <div className="h-full flex items-center justify-center dashboard-contents">
               <Switch>
                 <Route exact path={`${path}`}>
-                  <h1 className="text-2xl">Dashboard</h1>
+                  <div className="w-full h-full">
+                    <div className="h-32 w-full object-cover lg:h-48 bg-gradient-to-r from-indigo-500 to-green-200 via-blue-300"></div>
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                      <div className="-mt-12 md:-mt-16 md:flex md:items-center flex-col justify-center">
+                        <div className="flex">
+                          <img
+                            className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32 bg-gray-50"
+                            src={user?.photoURL}
+                            alt="Avatar"
+                          />
+                        </div>
+                        <div className="mx-4">
+                          <div className="sm:hidden md:block flex-1 text-center">
+                            <h1 className="text-2xl font-bold text-gray-900 truncate mt-5">
+                              {user?.displayName}
+                            </h1>
+                            <p className="text-gray-500">{user?.email}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="hidden mt-6 sm:block md:hidden min-w-0 flex-1">
+                        <h1 className="text-2xl font-bold text-gray-900 truncate">
+                          {user?.displayName}
+                        </h1>
+                        <p className="text-gray-500">{user?.email}</p>
+                      </div>
+                    </div>
+                  </div>
                 </Route>
                 <AdminRoute exact path={`${path}/manage-products`}>
                   <h1 className="text-2xl">Manage Products</h1>
@@ -46,6 +77,12 @@ const Dashboard = () => {
                 </AdminRoute>
                 <Route exact path={`${path}/my-orders`}>
                   <MyOrders></MyOrders>
+                </Route>
+                <Route exact path={`${path}/payment`}>
+                  <Payment></Payment>
+                </Route>
+                <Route exact path={`${path}/add-review`}>
+                  <AddReview></AddReview>
                 </Route>
                 <Route exact path={`${path}/*`}>
                   <NotFound></NotFound>

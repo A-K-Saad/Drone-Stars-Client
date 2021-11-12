@@ -7,7 +7,6 @@ const AddProduct = () => {
   const [quality, setQuality] = useState(0);
   const [description, setDescription] = useState("");
   const [chosenFile, setChosenFile] = useState();
-  const [image, setImage] = useState("");
   const [isAdding, setIsAdding] = useState(false);
   const { sweetAlert } = Alert();
 
@@ -23,8 +22,8 @@ const AddProduct = () => {
       body: imageData,
     });
     const data = await response.json();
-    setImage(data.data.url);
-    if (image) {
+    console.log(data);
+    if (data.data.url) {
       fetch("http://localhost:5000/drones", {
         method: "POST",
         headers: {
@@ -35,7 +34,7 @@ const AddProduct = () => {
           price: price,
           quality: quality,
           description: description,
-          image: image,
+          image: data.data.url,
         }),
       })
         .then(() => {
@@ -50,7 +49,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
+    <div className="h-full">
       <div className="flex items-center justify-center p-9">
         <form
           onSubmit={handleProduct}
