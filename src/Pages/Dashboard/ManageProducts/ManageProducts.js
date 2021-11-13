@@ -5,12 +5,17 @@ import Alert from "../../../hooks/Alert";
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   const [updateOrderId, setUpdateOrderId] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const { sweetAlert } = Alert();
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://mysterious-falls-17889.herokuapp.com/drones")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setIsLoading(false);
+      });
   }, [updateOrderId]);
 
   const deleteOrder = (orderId) => {
@@ -64,6 +69,17 @@ const ManageProducts = () => {
         }
       });
   };
+  if (isLoading) {
+    return (
+      <div className="flex justify-center align-center absolute">
+        <img
+          src="https://i.ibb.co/QjZhgZc/load.gif"
+          alt="Loading..."
+          className="w-24"
+        />
+      </div>
+    );
+  }
 
   return (
     <>

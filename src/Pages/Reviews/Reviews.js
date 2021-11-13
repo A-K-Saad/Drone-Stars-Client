@@ -2,12 +2,29 @@ import React, { useState, useEffect } from "react";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://mysterious-falls-17889.herokuapp.com/reviews")
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => {
+        setReviews(data);
+        setIsLoading(false);
+      });
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center align-center">
+        <img
+          src="https://i.ibb.co/QjZhgZc/load.gif"
+          alt="Loading..."
+          className="w-24"
+        />
+      </div>
+    );
+  }
 
   return (
     <>

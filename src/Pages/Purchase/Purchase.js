@@ -15,6 +15,18 @@ const Purchase = () => {
         const drone = data?.find((d) => d._id === droneId);
         setDrone(drone);
         setIsLoading(false);
+        //Update views
+        fetch("https://mysterious-falls-17889.herokuapp.com/drones", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            _id: droneId,
+            views: drone.views + 1 || 1,
+            updateType: "views",
+          }),
+        });
       });
   }, [droneId]);
 
@@ -44,7 +56,7 @@ const Purchase = () => {
                 {drone?.quality}p
               </h1>
               <div className="text-md text-gray-500">
-                ( <i className="fas fa-user"></i>
+                ( <i className="fas fa-user mr-2"></i>
                 {drone?.views || 10} Views)
               </div>
             </div>{" "}
