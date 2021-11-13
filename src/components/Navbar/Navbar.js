@@ -50,7 +50,7 @@ const Navbar = () => {
                           e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
                         }}
                         alt="Avatar"
-                        className="w-auto h-auto"
+                        className="max-w-none h-full"
                       />
                     </div>
                   </>
@@ -137,7 +137,7 @@ const Navbar = () => {
                           e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
                         }}
                         alt="Avatar"
-                        className="w-auto h-auto"
+                        className="max-w-none h-full"
                       />
                     </div>
                   </>

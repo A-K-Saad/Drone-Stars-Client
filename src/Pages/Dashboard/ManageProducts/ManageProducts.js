@@ -14,7 +14,7 @@ const ManageProducts = () => {
   }, [updateOrderId]);
 
   const deleteOrder = (orderId) => {
-    fetch("http://localhost:5000/drones", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/drones", {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

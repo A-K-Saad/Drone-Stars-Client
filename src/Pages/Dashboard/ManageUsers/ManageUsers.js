@@ -124,7 +124,7 @@ const ManageUsers = () => {
                         (e.target.src = "https://i.ibb.co/qgbdqZ3/male.png")
                       }
                       alt={user.name}
-                      className="w-auto h-auto"
+                      className="max-w-none h-full"
                     />
                   </div>
                   <svg

@@ -4,13 +4,13 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import Reviews from "./components/Reviews/Reviews";
 import AuthProvider from "./Contexts/AuthProvider";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Drones from "./Pages/Drones/Drones";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Purchase from "./Pages/Purchase/Purchase";
+import Reviews from "./Pages/Reviews/Reviews";
 import Signup from "./Pages/Signup/Signup";
 
 const App = () => {
