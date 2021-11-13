@@ -45,7 +45,7 @@ const UseFirebase = () => {
 
   useEffect(() => {
     setLoadAdmin(true);
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://mysterious-falls-17889.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setIsAdmin(data.admin);
@@ -106,7 +106,7 @@ const UseFirebase = () => {
       role: "user",
       avatar: avatar,
     };
-    fetch("http://localhost:5000/users", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

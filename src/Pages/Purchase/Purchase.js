@@ -9,7 +9,7 @@ const Purchase = () => {
   const history = useHistory();
 
   useEffect(() => {
-    fetch("http://localhost:5000/drones")
+    fetch("https://mysterious-falls-17889.herokuapp.com/drones")
       .then((res) => res.json())
       .then((data) => {
         const drone = data.find((d) => d._id === droneId);

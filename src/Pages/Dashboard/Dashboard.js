@@ -12,6 +12,7 @@ import ManageUsers from "./ManageUsers/ManageUsers";
 import MyOrders from "./MyOrders/MyOrders";
 import Payment from "./Payment/Payment";
 import AddReview from "./AddReview/AddReview";
+import ManageProducts from "./ManageProducts/ManageProducts";
 
 const Dashboard = () => {
   let { path } = useRouteMatch();
@@ -64,7 +65,7 @@ const Dashboard = () => {
                   </div>
                 </Route>
                 <AdminRoute exact path={`${path}/manage-products`}>
-                  <h1 className="text-2xl">Manage Products</h1>
+                  <ManageProducts></ManageProducts>
                 </AdminRoute>
                 <AdminRoute exact path={`${path}/add-product`}>
                   <AddProduct></AddProduct>

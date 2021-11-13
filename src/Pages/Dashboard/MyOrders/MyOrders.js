@@ -10,7 +10,9 @@ const MyOrders = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/my-orders/${user?.email}`)
+    fetch(
+      `https://mysterious-falls-17889.herokuapp.com/my-orders/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
     setIsLoading(false);

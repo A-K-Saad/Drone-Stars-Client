@@ -7,7 +7,7 @@ const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
   const { sweetAlert } = Alert();
 
   const updateStatus = (orderId, status) => {
-    fetch("http://localhost:5000/orders/", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/orders/", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -18,8 +18,7 @@ const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
       .then(() => setUpdateOrderId(orderId));
   };
   const deleteOrder = (orderId) => {
-    setUpdateOrderId(orderId);
-    fetch("http://localhost:5000/orders", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/orders", {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

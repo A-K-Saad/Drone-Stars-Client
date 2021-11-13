@@ -11,14 +11,21 @@ const ManageUsers = () => {
   const { sweetAlert } = Alert();
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://mysterious-falls-17889.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [adminEmail]);
 
   const handleAdminSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/users/admin", {
+
+    const existsInUser = users?.find((user) => user.email === email);
+    if (!existsInUser) {
+      sweetAlert("error", "OOPS!", "User does not exist!", false);
+      return;
+    }
+
+    fetch("https://mysterious-falls-17889.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -41,7 +48,7 @@ const ManageUsers = () => {
   }
 
   return (
-    <>
+    <div className="h-full w-full">
       <div className="flex flex-col items-center justify-center w-full p-5">
         <div className="relative w-full">
           <div className="absolute inset-0 flex items-center">
@@ -54,9 +61,12 @@ const ManageUsers = () => {
           </div>
         </div>
         <div className="w-full">
-          <form className="w-full max-w-lg" onSubmit={handleAdminSubmit}>
-            <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <form
+            className="w-full max-w-lg m-auto p-6 bg-white shadow-sm"
+            onSubmit={handleAdminSubmit}
+          >
+            <div className="flex flex-wrap -mx-3 mb-6 justify-center">
+              <div className="w-full px-3 mb-6 md:mb-0">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                   htmlFor="grid-first-name"
@@ -64,14 +74,14 @@ const ManageUsers = () => {
                   Email:
                 </label>
                 <input
-                  className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight outline-none focus:shadow-md"
+                  className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight outline-none focus:shadow-md shadow-sm"
                   id="grid-first-name"
                   type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-center flex items-center justify-center">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-center flex items-center justify-center m-auto">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 mr-2"
@@ -107,14 +117,16 @@ const ManageUsers = () => {
             <div key={user._id}>
               <div className="bg-white shadow-md rounded p-2">
                 <div className="w-12 relative">
-                  <img
-                    src={user.avatar}
-                    onError={(e) =>
-                      (e.target.src = "https://i.ibb.co/qgbdqZ3/male.png")
-                    }
-                    alt={user.name}
-                    className="rounded-full w-10 h-10 border border-gray-300"
-                  />
+                  <div className="rounded-full w-10 h-10 border border-gray-300 overflow-hidden">
+                    <img
+                      src={user.avatar}
+                      onError={(e) =>
+                        (e.target.src = "https://i.ibb.co/qgbdqZ3/male.png")
+                      }
+                      alt={user.name}
+                      className="w-auto h-auto"
+                    />
+                  </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className={`h-6 w-6 bottom-0 left-7 ${
@@ -141,7 +153,7 @@ const ManageUsers = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

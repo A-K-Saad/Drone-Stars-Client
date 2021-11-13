@@ -17,7 +17,7 @@ const AddReview = () => {
       message: message,
       rating: rating,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const Products = ({ quantity }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/drones")
+    fetch("https://mysterious-falls-17889.herokuapp.com/drones")
       .then((res) => res.json())
       .then((data) => {
         setDrones(data);

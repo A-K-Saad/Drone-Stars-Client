@@ -32,7 +32,7 @@ const BookingForm = ({ droneId, dronePrice }) => {
       droneId: droneId,
       status: "Pending",
     };
-    fetch("http://localhost:5000/orders", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

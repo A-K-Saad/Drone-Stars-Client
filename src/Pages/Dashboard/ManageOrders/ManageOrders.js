@@ -7,7 +7,7 @@ const ManageOrders = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://mysterious-falls-17889.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
     setIsLoading(false);

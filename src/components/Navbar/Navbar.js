@@ -27,7 +27,7 @@ const Navbar = () => {
                 {user?.email && <NavLink to="/dashboard">Dashboard</NavLink>}
                 <NavLink to="/reviews">Reviews</NavLink>
               </div>
-              <div className="hidden xl:flex items-center space-x-5">
+              <div className="hidden md:flex items-center space-x-5">
                 {user?.email ? (
                   <>
                     <button
@@ -39,19 +39,20 @@ const Navbar = () => {
                     >
                       <i className="fas fa-sign-out-alt"></i> Sign Out
                     </button>
-                    <img
-                      src={
-                        user?.photoURL ||
-                        primaryAvatar ||
-                        "https://i.ibb.co/qgbdqZ3/male.png"
-                      }
-                      style={{ width: "50px", height: "50px" }}
-                      onError={(e) => {
-                        e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
-                      }}
-                      alt="Avatar"
-                      className="rounded-full p-0 w-10 border border-gray-300"
-                    />
+                    <div className="rounded-full p-0 w-10 h-10 border border-gray-300 overflow-hidden">
+                      <img
+                        src={
+                          user?.photoURL ||
+                          primaryAvatar ||
+                          "https://i.ibb.co/qgbdqZ3/male.png"
+                        }
+                        onError={(e) => {
+                          e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
+                        }}
+                        alt="Avatar"
+                        className="w-auto h-auto"
+                      />
+                    </div>
                   </>
                 ) : (
                   <>
@@ -125,19 +126,20 @@ const Navbar = () => {
                     >
                       <i className="fas fa-sign-out-alt"></i> Sign Out
                     </button>
-                    <img
-                      src={
-                        user?.photoURL ||
-                        primaryAvatar ||
-                        "https://i.ibb.co/qgbdqZ3/male.png"
-                      }
-                      style={{ width: "50px", height: "50px" }}
-                      onError={(e) => {
-                        e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
-                      }}
-                      alt="Avatar"
-                      className="rounded-full p-0 w-10 border border-gray-300"
-                    />
+                    <div className="rounded-full p-0 w-10 h-10 border border-gray-300 overflow-hidden">
+                      <img
+                        src={
+                          user?.photoURL ||
+                          primaryAvatar ||
+                          "https://i.ibb.co/qgbdqZ3/male.png"
+                        }
+                        onError={(e) => {
+                          e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
+                        }}
+                        alt="Avatar"
+                        className="w-auto h-auto"
+                      />
+                    </div>
                   </>
                 ) : (
                   <>

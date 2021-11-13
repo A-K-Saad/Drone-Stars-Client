@@ -28,18 +28,20 @@ const Topbar = ({ setIsMenuOpen }) => {
             <i className="fas fa-sign-out-alt"></i>{" "}
             <span className="hidden md:inline">Sign Out</span>
           </button>
-          <img
-            src={
-              user?.photoURL ||
-              primaryAvatar ||
-              "https://i.ibb.co/qgbdqZ3/male.png"
-            }
-            onError={(e) => {
-              e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
-            }}
-            alt="Avatar"
-            className="rounded-full p-0 w-10 border border-gray-300"
-          />
+          <div className="overflow-hidden rounded-full p-0 w-10 h-10 border border-gray-300">
+            <img
+              src={
+                user?.photoURL ||
+                primaryAvatar ||
+                "https://i.ibb.co/qgbdqZ3/male.png"
+              }
+              onError={(e) => {
+                e.target.src = "https://i.ibb.co/qgbdqZ3/male.png";
+              }}
+              alt="Avatar"
+              className="w-auto h-auto"
+            />
+          </div>
         </div>
       </div>
     </>
