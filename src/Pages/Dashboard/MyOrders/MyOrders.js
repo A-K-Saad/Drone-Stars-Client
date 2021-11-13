@@ -14,8 +14,11 @@ const MyOrders = () => {
       `https://mysterious-falls-17889.herokuapp.com/my-orders/${user?.email}`
     )
       .then((res) => res.json())
-      .then((data) => setMyOrders(data));
-    setIsLoading(false);
+      .then((data) => {
+        setIsLoading(false);
+        setUpdateOrderId("");
+        setMyOrders(data);
+      });
   }, [user, updateOrderId]);
 
   if (isLoading) {
@@ -24,7 +27,7 @@ const MyOrders = () => {
         <img
           src="https://i.ibb.co/QjZhgZc/load.gif"
           alt="Loading..."
-          className="w-15"
+          className="w-24"
         />
       </div>
     );
@@ -42,24 +45,28 @@ const MyOrders = () => {
   return (
     <>
       <div className="w-full">
-        <div className="flex items-center justify-center md:p-9 h-full w-full">
-          <div className="table rounded-lg w-full shadow-md">
-            <div className="grid grid-cols-4 py-4">
-              <div className="text-left md:pl-6">Recipient</div>
-              <div className="text-center">Product</div>
-              <div className="text-center">Status</div>
-              <div className="text-right md:pr-6">Action</div>
+        <div className="md:p-9">
+          <div className="flex items-center justify-center h-full w-full">
+            <div className="table rounded-lg w-full shadow-md">
+              <div className="grid grid-cols-4 py-4">
+                <div className="text-left md:pl-6">Recipient</div>
+                <div className="text-center">Product</div>
+                <div className="text-center">Status</div>
+                <div className="text-right md:pr-6">Action</div>
+              </div>
+              <hr />
+              {myOrders?.map((order) => {
+                return (
+                  <SingleOrder
+                    key={order._id}
+                    order={order}
+                    setUpdateOrderId={setUpdateOrderId}
+                    orders={myOrders}
+                    setOrders={setMyOrders}
+                  ></SingleOrder>
+                );
+              })}
             </div>
-            <hr />
-            {myOrders?.map((order) => {
-              return (
-                <SingleOrder
-                  key={order._id}
-                  order={order}
-                  setUpdateOrderId={setUpdateOrderId}
-                ></SingleOrder>
-              );
-            })}
           </div>
         </div>
       </div>

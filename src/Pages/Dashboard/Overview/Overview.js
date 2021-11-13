@@ -4,7 +4,13 @@ import Services from "../../../components/Services/Services";
 const Overview = () => {
   return (
     <>
-      <Services></Services>
+      <div className="h-full w-full">
+        <div className="md:py-9">
+          <div className="flex items-center justify-center">
+            <Services></Services>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

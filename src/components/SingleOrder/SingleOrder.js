@@ -3,7 +3,13 @@ import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import Alert from "../../hooks/Alert";
 
-const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
+const SingleOrder = ({
+  order,
+  setUpdateOrderId,
+  allOrdersPage,
+  orders,
+  setOrders,
+}) => {
   const { sweetAlert } = Alert();
 
   const updateStatus = (orderId, status) => {
@@ -28,8 +34,9 @@ const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
       .then((res) => res.json())
       .then(() => {
         setUpdateOrderId(orderId);
+        const filteredOrders = orders.filter((order) => order._id !== orderId);
+        setOrders(filteredOrders);
       });
-    setUpdateOrderId(orderId);
   };
 
   //Confirmation SweetAlert
@@ -63,6 +70,8 @@ const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
             "Cancelled!",
             "Cancelled The Order Successfully!"
           );
+
+          setUpdateOrderId(_id);
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           sweetAlert("error", "UH OH!", "Couldn't Cancel The Order!");
         }
@@ -76,16 +85,20 @@ const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
           <span className="text-indigo-600">{order.name}</span>
           <span className="text-gray-500">{order.email}</span>
           {allOrdersPage && (
-            <span className="text-blue-600">{order.address}</span>
+            <span className="text-blue-600">
+              <i className="fas fa-map-marker-alt mr-2"></i>
+              {order.address}
+            </span>
           )}
         </div>
-        <div className="text-center flex items-center justify-center overflow-hidden">
+        <div className="text-center flex items-center justify-center overflow-hidden flex-col">
           <NavLink
             to={`/purchase/${order.droneId}`}
             className="text-indigo-600"
           >
             #{order.droneId}
           </NavLink>
+          Price: ${order.price}
         </div>
         <div className="text-center flex items-center justify-center">
           <span

@@ -12,10 +12,10 @@ const Purchase = () => {
     fetch("https://mysterious-falls-17889.herokuapp.com/drones")
       .then((res) => res.json())
       .then((data) => {
-        const drone = data.find((d) => d._id === droneId);
+        const drone = data?.find((d) => d._id === droneId);
         setDrone(drone);
+        setIsLoading(false);
       });
-    return setIsLoading(false);
   }, [droneId]);
 
   if (isLoading) {

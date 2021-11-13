@@ -30,25 +30,25 @@ const Services = () => {
     <>
       <div className="px:4 md:px-20 w-full">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 text-center">
-          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-400">
+          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-500">
             <div className="p-5 bg-white border border-gray-300 w-full">
               <h1 className="font-black text-5xl fw-bold">{clients}+</h1>
               <p className="pt-3 text-red-700">Clients</p>
             </div>
           </div>
-          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-400">
+          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-500">
             <div className="p-5 bg-white border border-gray-300 w-full">
               <h1 className="font-black text-5xl fw-bold">{resulation}+</h1>
               <p className="pt-3 text-red-700">Resulation</p>
             </div>
           </div>
-          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-400">
+          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-500">
             <div className="p-5 bg-white border border-gray-300 w-full">
               <h1 className="font-black text-5xl fw-bold">{flights}+</h1>
               <p className="pt-3 text-red-700">Flights</p>
             </div>
           </div>
-          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-400">
+          <div className="flex items-center justify-center p-2 shadow-sm border-2 border-red-500">
             <div className="p-5 bg-white border border-gray-300 w-full">
               <h1 className="font-black text-5xl fw-bold">{projects}+</h1>
               <p className="pt-3 text-red-700">Projects</p>

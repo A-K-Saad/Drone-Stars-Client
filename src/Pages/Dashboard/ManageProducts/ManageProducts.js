@@ -83,12 +83,20 @@ const ManageProducts = () => {
                     </div>
                     <h3 className="text-md font-semibold">{product.name}</h3>
 
-                    <button
-                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 text-xl rounded"
-                      onClick={() => confirmAlert(product._id)}
-                    >
-                      <i className="fas fa-trash"></i>
-                    </button>
+                    <div>
+                      {/* <button
+                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-xl rounded mr-2"
+                        onClick={() => confirmAlert(product._id)}
+                      >
+                        <i className="fas fa-edit"></i>
+                      </button> */}
+                      <button
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 text-xl rounded"
+                        onClick={() => confirmAlert(product._id)}
+                      >
+                        <i className="fas fa-trash"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

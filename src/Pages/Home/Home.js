@@ -9,7 +9,9 @@ const Home = () => {
     <>
       <Banner></Banner>
       <div className="py-10 text-center">
-        <Services></Services>
+        <div className="px-5 md:px-12">
+          <Services></Services>
+        </div>
         <Products quantity={6}></Products>
         <Reviews></Reviews>
       </div>

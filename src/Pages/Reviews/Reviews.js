@@ -4,7 +4,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://mysterious-falls-17889.herokuapp.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -14,7 +14,7 @@ const Reviews = () => {
       {reviews.length >= 1 && (
         <div className="mb-10 mt-20 px-3 md:px-32">
           <div className="text-center text-3xl mb-8">What users say</div>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {reviews?.map((review) => {
               const ratingElements = [];
               const unRatedElements = [];
