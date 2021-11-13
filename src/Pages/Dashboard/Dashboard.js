@@ -13,6 +13,7 @@ import MyOrders from "./MyOrders/MyOrders";
 import Payment from "./Payment/Payment";
 import AddReview from "./AddReview/AddReview";
 import ManageProducts from "./ManageProducts/ManageProducts";
+import Overview from "./Overview/Overview";
 
 const Dashboard = () => {
   let { path } = useRouteMatch();
@@ -84,6 +85,9 @@ const Dashboard = () => {
                 </Route>
                 <Route exact path={`${path}/add-review`}>
                   <AddReview></AddReview>
+                </Route>
+                <Route exact path={`${path}/overview`}>
+                  <Overview></Overview>
                 </Route>
                 <Route exact path={`${path}/*`}>
                   <NotFound></NotFound>

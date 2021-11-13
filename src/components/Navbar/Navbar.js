@@ -12,7 +12,7 @@ const Navbar = () => {
     <>
       <div className="flex flex-wrap place-items-center">
         <section className="mx-auto w-full bg-white shadow-sm">
-          <nav className="flex justify-between text-gray-500 left-0 right-0 m-auto sticky">
+          <nav className="flex justify-between text-gray-500 left-0 right-0 m-auto">
             <div className="px-2 md:px-5 xl:px-12 py-1 flex w-full items-center justify-between">
               <NavLink to="/">
                 <img

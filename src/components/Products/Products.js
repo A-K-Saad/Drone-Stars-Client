@@ -53,7 +53,7 @@ const Products = ({ quantity }) => {
               <footer className="text-center py-3 px-8 text-gray-500">
                 <NavLink
                   to={`/purchase/${product._id}`}
-                  className="py-2 px-4 mt-5 bg-green-500 rounded-lg text-white font-semibold hover:bg-green-600"
+                  className="py-2 px-4 mt-5 bg-red-500 rounded text-white font-semibold hover:bg-red-600"
                 >
                   Purchase
                 </NavLink>
