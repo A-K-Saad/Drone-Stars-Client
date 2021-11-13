@@ -102,18 +102,22 @@ const SingleOrder = ({ order, setUpdateOrderId, allOrdersPage }) => {
         </div>
         <div className="text-center flex items-center justify-end py-2 md:py-6 px-6">
           <div className="flex items-center space-x-2 text-2xl">
-            <i
-              className="fas fa-check-circle text-green-500 cursor-pointer"
-              onClick={() => updateStatus(order._id, "Shipped")}
-            ></i>
-            <i
-              className="fas fa-shipping-fast text-indigo-400 cursor-pointer"
-              onClick={() => updateStatus(order._id, "Pending")}
-            ></i>
-            <i
-              className="fas fa-times-circle text-red-500 cursor-pointer"
-              onClick={() => updateStatus(order._id, "Rejected")}
-            ></i>
+            {allOrdersPage && (
+              <>
+                <i
+                  className="fas fa-check-circle text-green-500 cursor-pointer"
+                  onClick={() => updateStatus(order._id, "Shipped")}
+                ></i>
+                <i
+                  className="fas fa-shipping-fast text-indigo-400 cursor-pointer"
+                  onClick={() => updateStatus(order._id, "Pending")}
+                ></i>
+                <i
+                  className="fas fa-times-circle text-red-500 cursor-pointer"
+                  onClick={() => updateStatus(order._id, "Rejected")}
+                ></i>
+              </>
+            )}
             <button
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 text-xl rounded"
               onClick={() => confirmAlert(order._id)}

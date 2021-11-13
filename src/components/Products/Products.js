@@ -6,12 +6,13 @@ const Products = ({ quantity }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://mysterious-falls-17889.herokuapp.com/drones")
       .then((res) => res.json())
       .then((data) => {
         setDrones(data);
+        setIsLoading(false);
       });
-    setIsLoading(false);
   }, []);
 
   if (isLoading) {
