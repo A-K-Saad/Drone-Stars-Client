@@ -16,11 +16,10 @@ initializeAuthentication();
 const UseFirebase = () => {
   const [user, setUser] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isCheckingAdmin, setIsCheckingAdmin] = useState(true);
   const [loading, setLoading] = useState(true);
   const [primaryAvatar, setPrimaryAvatar] = useState("");
   const [primaryName, setPrimaryName] = useState("");
-  const [loadAdmin, setLoadAdmin] = useState(true);
-  const [checkAdmin, setCheckAdmin] = useState(false);
   const { sweetAlert } = Alert();
 
   const auth = getAuth();
@@ -44,28 +43,26 @@ const UseFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    setLoadAdmin(true);
+    setIsCheckingAdmin(true);
     fetch(`https://mysterious-falls-17889.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setIsAdmin(data.admin);
-        setCheckAdmin(false);
-        setLoadAdmin(false);
+        setIsCheckingAdmin(false);
       });
-  }, [user.email, checkAdmin]);
+  }, [user.email]);
 
   const logOut = () => {
     signOut(auth)
       .then(() => {
         sweetAlert("success", "Success", "Logged Out SuccessFully", false);
+        setLoading(false);
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        sweetAlert("error", "OOPS!", `Error ${errorCode}! ${errorMessage}`);
-        console.log(`OOPS! Error ${errorCode}! ${errorMessage}`);
-      })
-      .finally(() => setLoading(false));
+        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
+        console.log(`OOPS! ${errorMessage}`);
+      });
   };
   const emailSignin = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
@@ -103,7 +100,6 @@ const UseFirebase = () => {
     const user = {
       email: email,
       displayName: displayName,
-      role: "user",
       avatar: avatar,
     };
     fetch("https://mysterious-falls-17889.herokuapp.com/users", {
@@ -119,7 +115,7 @@ const UseFirebase = () => {
     user,
     isAdmin,
     loading,
-    loadAdmin,
+    isCheckingAdmin,
     setLoading,
     primaryAvatar,
     primaryName,

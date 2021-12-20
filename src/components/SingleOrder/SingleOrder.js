@@ -1,3 +1,4 @@
+import Ripple from "material-ripple-effects";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -11,6 +12,7 @@ const SingleOrder = ({
   setOrders,
 }) => {
   const { sweetAlert } = Alert();
+  const ripple = new Ripple();
 
   const updateStatus = (orderId, status) => {
     fetch("https://mysterious-falls-17889.herokuapp.com/orders/", {
@@ -93,6 +95,7 @@ const SingleOrder = ({
         </div>
         <div className="text-center flex items-center justify-center overflow-hidden flex-col">
           <NavLink
+            onMouseUp={(e) => ripple.create(e, "light")}
             to={`/purchase/${order.droneId}`}
             className="text-indigo-600"
           >
@@ -132,6 +135,7 @@ const SingleOrder = ({
               </>
             )}
             <button
+              onMouseUp={(e) => ripple.create(e, "light")}
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 text-xl rounded"
               onClick={() => confirmAlert(order._id)}
             >

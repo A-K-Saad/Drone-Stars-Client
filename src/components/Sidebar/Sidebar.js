@@ -1,3 +1,4 @@
+import Ripple from "material-ripple-effects";
 import React from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -5,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
   let { url } = useRouteMatch();
   const { isAdmin } = useAuth();
+  const ripple = new Ripple();
 
   return (
     <>
@@ -20,6 +22,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
             <NavLink
               exact
               to="/"
+              onMouseUp={(e) => ripple.create(e, "light")}
               className="h-16 flex items-center justify-center py-9"
             >
               <img
@@ -27,8 +30,8 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
                 alt="Drone_Logo"
                 className="w-7 md:w-10"
               />
-              <h1 className="text-xl md:text-2xl pl-3 text-gray-700">
-                Drone Stars
+              <h1 className="text-xl md:text-2xl pl-3 text-gray-700 font-bold">
+                Star Drones
               </h1>
             </NavLink>
             <button
@@ -41,6 +44,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
           <hr />
           <ul className="mt-6">
             <NavLink
+              onMouseUp={(e) => ripple.create(e, "light")}
               exact
               to={`${url}`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
@@ -55,6 +59,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
               <>
                 <NavLink
                   exact
+                  onMouseUp={(e) => ripple.create(e, "light")}
                   to={`${url}/manage-products`}
                   className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
                   activeClassName="text-blue-700 bg-blue-100"
@@ -65,6 +70,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
                   </div>
                 </NavLink>
                 <NavLink
+                  onMouseUp={(e) => ripple.create(e, "light")}
                   exact
                   to={`${url}/manage-orders`}
                   className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
@@ -76,6 +82,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
                   </div>
                 </NavLink>
                 <NavLink
+                  onMouseUp={(e) => ripple.create(e, "light")}
                   exact
                   to={`${url}/manage-users`}
                   className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
@@ -87,6 +94,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
                   </div>
                 </NavLink>
                 <NavLink
+                  onMouseUp={(e) => ripple.create(e, "light")}
                   exact
                   to={`${url}/add-product`}
                   className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
@@ -101,6 +109,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
             )}
             <NavLink
               exact
+              onMouseUp={(e) => ripple.create(e, "light")}
               to={`${url}/my-orders`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
               activeClassName="text-blue-700 bg-blue-100"
@@ -114,17 +123,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
               <>
                 <NavLink
                   exact
-                  to={`${url}/payment`}
-                  className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
-                  activeClassName="text-blue-700 bg-blue-100"
-                >
-                  <div className="flex items-center">
-                    <i className="fab fa-bitcoin w-6"></i>
-                    <span className="ml-2">Payment</span>
-                  </div>
-                </NavLink>
-                <NavLink
-                  exact
+                  onMouseUp={(e) => ripple.create(e, "light")}
                   to={`${url}/add-review`}
                   className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
                   activeClassName="text-blue-700 bg-blue-100"
@@ -138,6 +137,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
             )}
             <NavLink
               exact
+              onMouseUp={(e) => ripple.create(e, "light")}
               to={`${url}/overview`}
               className="flex w-full justify-between text-gray-600 hover:text-blue-700 hover:bg-blue-100 cursor-pointer items-center py-3 px-8 text-md"
               activeClassName="text-blue-700 bg-blue-100"

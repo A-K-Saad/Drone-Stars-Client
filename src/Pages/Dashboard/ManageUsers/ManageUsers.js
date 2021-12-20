@@ -1,3 +1,4 @@
+import Ripple from "material-ripple-effects";
 import React, { useState, useEffect } from "react";
 import Alert from "../../../hooks/Alert";
 import useAuth from "../../../hooks/useAuth";
@@ -9,6 +10,7 @@ const ManageUsers = () => {
   const [email, setEmail] = useState("");
   const { user } = useAuth();
   const { sweetAlert } = Alert();
+  const ripple = new Ripple();
 
   useEffect(() => {
     fetch("https://mysterious-falls-17889.herokuapp.com/users")
@@ -81,7 +83,10 @@ const ManageUsers = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-center flex items-center justify-center m-auto">
+                <button
+                  onMouseUp={(e) => ripple.create(e, "light")}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 text-center flex items-center justify-center m-auto"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 mr-2"

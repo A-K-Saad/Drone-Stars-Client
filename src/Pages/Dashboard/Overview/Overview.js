@@ -6,7 +6,7 @@ const Overview = () => {
     <>
       <div className="h-full w-full">
         <div className="md:py-9">
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center px-8">
             <Services></Services>
           </div>
         </div>

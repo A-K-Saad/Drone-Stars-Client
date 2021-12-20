@@ -3,8 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const AdminRoute = ({ children, ...rest }) => {
-  const { user, isAdmin, loadAdmin } = useAuth();
-  if (loadAdmin) {
+  const { user, isAdmin, isCheckingAdmin } = useAuth();
+  if (isCheckingAdmin) {
     return (
       <div className="text-center w-full h-full flex items-center justify-center">
         <img
@@ -19,7 +19,7 @@ const AdminRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        user.email && !loadAdmin && isAdmin ? (
+        user?.email && !isCheckingAdmin && isAdmin ? (
           children
         ) : (
           <Redirect

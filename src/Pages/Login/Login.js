@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Alert from "../../hooks/Alert";
+import Ripple from "material-ripple-effects";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ const Login = () => {
   const history = useHistory();
   const location = useLocation();
   const { sweetAlert } = Alert();
+  const ripple = new Ripple();
 
   const submitLogin = (e) => {
     e.preventDefault();
@@ -22,13 +24,11 @@ const Login = () => {
         const user = userCredential.user;
         sweetAlert("success", "Success", "Logged In SuccessFully", false);
         setUser(user);
-        saveUser(user.email, user.displayName, user.photoURL, "PUT");
-        history.push(location?.state.from || "/");
+        history.push(location?.state?.from || "/");
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        sweetAlert("error", "OOPS!", `Error ${errorCode}! ${errorMessage}`);
+        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
       });
   };
   const googleSignIn = () => {
@@ -36,14 +36,13 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        saveUser(user.email, user.displayName, user.photoURL, "POST");
-        history.push(location?.state.from || "/");
+        saveUser(user.email, user.displayName, user.photoURL, "PUT");
+        history.push(location?.state?.from || "/");
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
 
-        console.log(`OOPS! Error ${errorCode}! ${errorMessage}`);
+        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
       })
       .finally(() => setLoading(false));
   };
@@ -94,12 +93,17 @@ const Login = () => {
           </div>
           <p className="my-4 text-center">
             Don't Have Account?
-            <NavLink to="/signup" className="text-blue-700 italic">
+            <NavLink
+              onMouseUp={(e) => ripple.create(e, "light")}
+              to="/signup"
+              className="text-blue-700 italic"
+            >
               {" "}
               Create Account
             </NavLink>
           </p>
           <button
+            onMouseUp={(e) => ripple.create(e, "light")}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="submit"
           >
@@ -114,6 +118,7 @@ const Login = () => {
             </div>
           </div>
           <button
+            onMouseUp={(e) => ripple.create(e, "light")}
             type="button"
             className="bg-gray-50 border border-gray-300 hover:bg-gray-100 text-gray-700 py-2 rounded shadow w-full"
             onClick={googleSignIn}

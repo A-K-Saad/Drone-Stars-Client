@@ -1,4 +1,5 @@
 import { getAuth, updateProfile } from "@firebase/auth";
+import Ripple from "material-ripple-effects";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
@@ -16,6 +17,7 @@ const Signup = () => {
   const { sweetAlert } = Alert();
   const history = useHistory();
   const location = useLocation();
+  const ripple = new Ripple();
 
   const createUserHandler = async (e) => {
     const auth = getAuth();
@@ -72,7 +74,7 @@ const Signup = () => {
       .catch((error) => {
         const errorMessage = error.message;
 
-        console.log(`OOPS! ${errorMessage}`);
+        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
       })
       .finally(() => setLoading(false));
   };
@@ -148,12 +150,17 @@ const Signup = () => {
           </div>
           <p className="my-4 text-center">
             Already Have Account?
-            <NavLink to="/login" className="text-blue-700 italic">
+            <NavLink
+              onMouseUp={(e) => ripple.create(e, "light")}
+              to="/login"
+              className="text-blue-700 italic"
+            >
               {" "}
               Login
             </NavLink>
           </p>
           <button
+            onMouseUp={(e) => ripple.create(e, "light")}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="submit"
           >
@@ -169,6 +176,7 @@ const Signup = () => {
           </div>
           <button
             type="button"
+            onMouseUp={(e) => ripple.create(e, "light")}
             className="bg-gray-50 border border-gray-300 hover:bg-gray-100 text-gray-700 py-2 rounded shadow w-full"
             onClick={googleSignIn}
           >

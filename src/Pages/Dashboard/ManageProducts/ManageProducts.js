@@ -1,3 +1,4 @@
+import Ripple from "material-ripple-effects";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Alert from "../../../hooks/Alert";
@@ -7,6 +8,7 @@ const ManageProducts = () => {
   const [updateOrderId, setUpdateOrderId] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { sweetAlert } = Alert();
+  const ripple = new Ripple();
 
   useEffect(() => {
     setIsLoading(true);
@@ -107,6 +109,7 @@ const ManageProducts = () => {
                         <i className="fas fa-edit"></i>
                       </button> */}
                       <button
+                        onMouseUp={(e) => ripple.create(e, "light")}
                         className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 text-xl rounded"
                         onClick={() => confirmAlert(product._id)}
                       >

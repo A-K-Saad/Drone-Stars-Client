@@ -1,8 +1,11 @@
+import Ripple from "material-ripple-effects";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NotFound.css";
 
 const NotFound = () => {
+  const ripple = new Ripple();
+
   return (
     <>
       <div className="unfound-div flex align-center justify-center flex-col py-14 bg-gray-50">
@@ -16,10 +19,12 @@ const NotFound = () => {
           <h6 className="text-gray-400 text 3xl">
             Seems like there's nothing to show here!
           </h6>
-          <Link to="/">
-            <button className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-6">
-              Back to Home
-            </button>
+          <Link
+            to="/"
+            onMouseUp={(e) => ripple.create(e, "light")}
+            className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-6"
+          >
+            Back to Home
           </Link>
         </div>
       </div>

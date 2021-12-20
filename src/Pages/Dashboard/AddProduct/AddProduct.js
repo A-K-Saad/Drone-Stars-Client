@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Ripple from "material-ripple-effects";
 import Alert from "../../../hooks/Alert";
 
 const AddProduct = () => {
@@ -9,6 +10,7 @@ const AddProduct = () => {
   const [chosenFile, setChosenFile] = useState();
   const [isAdding, setIsAdding] = useState(false);
   const { sweetAlert } = Alert();
+  const ripple = new Ripple();
 
   const handleProduct = async (e) => {
     setIsAdding(true);
@@ -152,6 +154,7 @@ const AddProduct = () => {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-4 text-center"
               type="submit"
+              onMouseUp={(e) => ripple.create(e, "light")}
             >
               Add Product
             </button>

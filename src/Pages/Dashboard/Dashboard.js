@@ -10,7 +10,6 @@ import "./Dashboard.css";
 import ManageOrders from "./ManageOrders/ManageOrders";
 import ManageUsers from "./ManageUsers/ManageUsers";
 import MyOrders from "./MyOrders/MyOrders";
-import Payment from "./Payment/Payment";
 import AddReview from "./AddReview/AddReview";
 import ManageProducts from "./ManageProducts/ManageProducts";
 import Overview from "./Overview/Overview";
@@ -43,7 +42,10 @@ const Dashboard = () => {
                         <div className="rounded-full ring-4 ring-white h-32 w-32 m-auto bg-gray-50 flex overflow-hidden">
                           <img
                             className="max-w-none h-full w-auto"
-                            src={user?.photoURL}
+                            src={
+                              user?.photoURL ||
+                              "https://i.ibb.co/qgbdqZ3/male.png"
+                            }
                             alt="Avatar"
                           />
                         </div>
@@ -79,9 +81,6 @@ const Dashboard = () => {
                 </AdminRoute>
                 <Route exact path={`${path}/my-orders`}>
                   <MyOrders></MyOrders>
-                </Route>
-                <Route exact path={`${path}/payment`}>
-                  <Payment></Payment>
                 </Route>
                 <Route exact path={`${path}/add-review`}>
                   <AddReview></AddReview>

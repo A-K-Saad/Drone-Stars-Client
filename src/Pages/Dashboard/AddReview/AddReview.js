@@ -40,8 +40,8 @@ const AddReview = () => {
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex items-center justify-center">
-          <div className="md:p-9 w-full">
+        <div className="flex items-center justify-center h-full">
+          <div className="md:p-9 w-full h-full flex items-center justify-center">
             <form
               onSubmit={handleReview}
               className="m-auto bg-white p-7 sign-form shadow-sm w-full"

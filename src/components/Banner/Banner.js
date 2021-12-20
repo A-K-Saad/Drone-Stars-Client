@@ -1,39 +1,42 @@
+import Ripple from "material-ripple-effects";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Banner.css";
 
 const Banner = () => {
+  const ripple = new Ripple();
   return (
     <>
       <section>
-        <div className="h-96 overflow-hidden relative video-outer">
-          <video
-            src="https://assets.mixkit.co/videos/preview/mixkit-highway-between-trees-506-large.mp4"
-            muted
-            autoPlay
-            loop
-            className="w-full"
-          ></video>
-          <div className="absolute top-0 bottom-0 m-auto h-full flex flex-col md:flex-row items-center justify-between p-7 md:px-32 w-full">
+        <div className="overflow-hidden relative bg-gray-100 py-14 lg:py-24 bg-gradient-to-br from-blue-200 to-purple-300">
+          <div className="flex flex-col md:flex-row items-center justify-between p-7 md:px-14 lg:px-32 w-full">
             <div className="text-white text-center md:text-left">
-              <h1 className="text-2xl md:text-7xl">Amazing Droner</h1>
-              <p className="md:text-3xl mt-3 text-red-600">
-                Fly in higher to get the target.
+              <p className="mb-2 text-xl md:text-2xl font-bold drop-shadow-md filter flex items-center">
+                <span className="w-10 mr-2 bg-white border border-white"></span>
+                Capture Every Moment
+                <span className="w-10 ml-2 bg-white border border-white"></span>
               </p>
-              <p className="mt-3 hidden md:block">
-                Dream to achieve the best and go higher and higher. We're with
-                you.
+              <h1 className="text-3xl lg:text-6xl font-bold drop-shadow-md filter">
+                Target Everything <br />
+                From The Sky
+              </h1>
+              <p className="mt-2 filter drop-shadow">
+                Get the best out of your photography.
+                <br />
               </p>
               <NavLink to="/drones">
-                <button className="h-10 px-5 m-2 text-white transition-colors duration-150 bg-blue-400 rounded-lg focus:shadow-outline hover:bg-blue-500 mt-5">
+                <button
+                  className="h-10 px-5 text-white transition-colors duration-150 bg-indigo-400 rounded focus:shadow-outline hover:bg-indigo-500 mt-4"
+                  onMouseUp={(e) => ripple.create(e, "light")}
+                >
                   Explore more
                 </button>
               </NavLink>
             </div>
             <img
-              src="https://www1.djicdn.com/assets/images/products/phantom-4-pro/s1/e-3-abec9da58eed5e2fa8ffe68806c4946c.png?from=cdnMap"
+              src="https://i.ibb.co/Bc50CtM/image.png"
               alt="Drone"
-              className="drone-gif w-96"
+              className="drone-gif mt-10 md:mt-0"
             />
           </div>
         </div>

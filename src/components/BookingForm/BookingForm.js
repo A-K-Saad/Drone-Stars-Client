@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Alert from "../../hooks/Alert";
 import { useHistory } from "react-router-dom";
+import Ripple from "material-ripple-effects";
+import UseRazorPay from "./useRazorPay";
 
 const BookingForm = ({ droneId, dronePrice }) => {
   const { user } = useAuth();
@@ -14,13 +16,16 @@ const BookingForm = ({ droneId, dronePrice }) => {
   const { sweetAlert } = Alert();
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const history = useHistory();
+  const ripple = new Ripple();
+  const { loadRazorpay } = UseRazorPay();
+
+  const [paymentId, setPaymentId] = useState("");
 
   useEffect(() => {
     setPrice(dronePrice * quantity);
   }, [quantity, dronePrice]);
 
-  const placeOrder = (e) => {
-    e.preventDefault();
+  const placeOrder = () => {
     setIsPlacingOrder(true);
     const order = {
       name: name,
@@ -31,6 +36,7 @@ const BookingForm = ({ droneId, dronePrice }) => {
       price: price,
       droneId: droneId,
       status: "Pending",
+      paymentId: paymentId,
     };
     fetch("https://mysterious-falls-17889.herokuapp.com/orders", {
       method: "POST",
@@ -49,13 +55,16 @@ const BookingForm = ({ droneId, dronePrice }) => {
       .catch((err) => {
         console.log(err);
       });
-    e.target.reset();
+    setPaymentId("");
   };
 
   return (
     <>
       <form
-        onSubmit={placeOrder}
+        onSubmit={(e) => {
+          e.preventDefault();
+          loadRazorpay(price, setPaymentId, placeOrder);
+        }}
         className="m-auto bg-white p-7 sign-form shadow-sm"
       >
         <h1 className="text-3xl text-center mb-5">Book The Drone</h1>
@@ -135,26 +144,24 @@ const BookingForm = ({ droneId, dronePrice }) => {
           min="1"
           onChange={(e) => setQuantity(e.target.value)}
         />
-        <h4 className="my-4 text-xl">Total Price: ${price}</h4>
-        {!isPlacingOrder ? (
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-            type="submit"
-          >
-            Book Now
-          </button>
-        ) : (
-          <button
-            className="bg-blue-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-            disabled
-          >
+        <button
+          className={`${
+            isPlacingOrder ? "bg-blue-400" : "bg-blue-500 hover:bg-blue-700"
+          } text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-5`}
+          onMouseUp={(e) => ripple.create(e, "light")}
+          type="submit"
+          disabled={isPlacingOrder}
+        >
+          {isPlacingOrder ? (
             <img
               src="https://i.ibb.co/nkCByxZ/loader.gif"
               alt="Loading..."
               className="w-6 m-auto"
             />
-          </button>
-        )}
+          ) : (
+            `Pay Now $${price}`
+          )}
+        </button>
       </form>
     </>
   );
