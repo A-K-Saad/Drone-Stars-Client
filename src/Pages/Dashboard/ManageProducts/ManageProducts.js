@@ -1,13 +1,11 @@
-import Ripple from "material-ripple-effects";
 import React, { useEffect, useState } from "react";
+import Ripple from "material-ripple-effects";
 import Swal from "sweetalert2";
-import Alert from "../../../hooks/Alert";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   const [updateOrderId, setUpdateOrderId] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const { sweetAlert } = Alert();
   const ripple = new Ripple();
 
   useEffect(() => {
@@ -36,40 +34,22 @@ const ManageProducts = () => {
   };
 
   //Confirmation SweetAlert
-
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      cancelButton:
-        "bg-red-500 hover:bg-red-600 px-4 py-2 rounded mr-2 text-white",
-      confirmButton:
-        "bg-green-500 hover:bg-green-600 px-4 py-2 rounded ml-2 text-white",
-    },
-    buttonsStyling: false,
-  });
   const confirmAlert = async (_id) => {
-    return swalWithBootstrapButtons
-      .fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          deleteOrder(_id);
-
-          sweetAlert(
-            "success",
-            "Cancelled!",
-            "Cancelled The Order Successfully!"
-          );
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          sweetAlert("error", "UH OH!", "Couldn't Cancel The Order!");
-        }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOrder(_id);
+        Swal.fire("Deleted!", "Product Removed Successfully!", "success");
+      }
+    });
   };
   if (isLoading) {
     return (
@@ -85,7 +65,7 @@ const ManageProducts = () => {
 
   return (
     <>
-      <div className="h-full w-full">
+      <div className="m-auto w-full">
         <div className="p-2 md:p-9">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {products.map((product) => (

@@ -13,7 +13,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       {/* Sidebar starts */}
       {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
       <div
-        className={`md:w-1/5 absolute sm:relative z-40 bg-white shadow md:h-full flex-col justify-between sm:flex min-h-screen ${
+        className={`md:w-1/5 relative z-40 bg-white shadow md:h-full flex-col justify-between md:flex min-h-screen ${
           isMenuOpen ? "flex w-auto" : "hidden"
         }`}
       >
@@ -31,7 +31,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
                 className="w-7 md:w-10"
               />
               <h1 className="text-xl md:text-2xl pl-3 text-gray-700 font-bold">
-                Star Drones
+                Drone Stars
               </h1>
             </NavLink>
             <button

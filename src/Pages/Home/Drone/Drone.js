@@ -79,7 +79,7 @@ const Drone = () => {
                   <h1 className="text-xl">{drone.name}</h1>
                   <h1 className="text-blue-400 pb-3">${drone.price}</h1>
                   <NavLink
-                    to={`/purchase/${drone._id}`}
+                    to={`/drones/${drone._id}`}
                     className="py-2 px-5 bg-indigo-400 rounded text-base text-white hover:bg-indigo-500 rounded-full"
                     onMouseUp={(e) => ripple.create(e, "light")}
                   >

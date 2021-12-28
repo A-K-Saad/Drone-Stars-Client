@@ -13,7 +13,7 @@ const Login = () => {
     useAuth();
   const history = useHistory();
   const location = useLocation();
-  const { sweetAlert } = Alert();
+  const { fireToast } = Alert();
   const ripple = new Ripple();
 
   const submitLogin = (e) => {
@@ -22,13 +22,16 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        sweetAlert("success", "Success", "Logged In SuccessFully", false);
+        // sweetAlert("success", "Success", "Logged In SuccessFully!", false);
+
+        fireToast("success", "Logged In Successfully!");
         setUser(user);
         history.push(location?.state?.from || "/");
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
+      .catch(() => {
+        fireToast("error", "Invalid Email Or Password!");
+        // const errorMessage = error.message;
+        // sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
       });
   };
   const googleSignIn = () => {
@@ -39,10 +42,11 @@ const Login = () => {
         saveUser(user.email, user.displayName, user.photoURL, "PUT");
         history.push(location?.state?.from || "/");
       })
-      .catch((error) => {
-        const errorMessage = error.message;
+      .catch(() => {
+        // const errorMessage = error.message;
+        fireToast("error", "Something Went Wrong!");
 
-        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
+        // sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
       })
       .finally(() => setLoading(false));
   };

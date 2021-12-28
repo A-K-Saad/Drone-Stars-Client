@@ -187,7 +187,7 @@ const Navbar = () => {
               <div
                 className={`${
                   isMenuOpen
-                    ? "absolute md:relative top-20 md:top-0 w-full md:w-auto left-0 bg-white py-6 md:py-0 z-50 -mt-0.5 shadow-inner"
+                    ? "absolute md:relative top-20 md:top-0 w-full md:w-auto left-0 bg-white py-4 md:py-0 z-50 -mt-0.5 shadow-inner md:shadow-none border-b md:border-none"
                     : "hidden md:flex items-center justify-between"
                 }`}
               >
@@ -195,14 +195,14 @@ const Navbar = () => {
                   <NavLink
                     onMouseUp={(e) => ripple.create(e, "light")}
                     to="/"
-                    className="px-4 py-3"
+                    className="px-4 py-1 md:py-3"
                   >
                     Home
                   </NavLink>
                   <NavLink
                     onMouseUp={(e) => ripple.create(e, "light")}
                     to="/drones"
-                    className="px-4 py-3"
+                    className="px-4 py-1 md:py-3"
                   >
                     Drones
                   </NavLink>
@@ -210,7 +210,7 @@ const Navbar = () => {
                     <NavLink
                       onMouseUp={(e) => ripple.create(e, "light")}
                       to="/dashboard"
-                      className="px-4 py-3"
+                      className="px-4 py-1 md:py-3"
                     >
                       Dashboard
                     </NavLink>
@@ -218,7 +218,7 @@ const Navbar = () => {
                   <NavLink
                     onMouseUp={(e) => ripple.create(e, "light")}
                     to="/reviews"
-                    className="px-4 py-3"
+                    className="px-4 py-1 md:py-3"
                   >
                     Reviews
                   </NavLink>

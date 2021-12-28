@@ -6,10 +6,10 @@ import NotFound from "./components/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./Contexts/AuthProvider";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import Details from "./Pages/Details/Details";
 import Drones from "./Pages/Drones/Drones";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
-import Purchase from "./Pages/Purchase/Purchase";
 import Reviews from "./Pages/Reviews/Reviews";
 import Signup from "./Pages/Signup/Signup";
 
@@ -57,9 +57,9 @@ const App = () => {
                   <Reviews></Reviews>
                 </FullContainer>
               </Route>
-              <PrivateRoute path="/purchase/:droneId">
+              <PrivateRoute path="/drones/:droneId">
                 <FullContainer>
-                  <Purchase></Purchase>
+                  <Details></Details>
                 </FullContainer>
               </PrivateRoute>
               <PrivateRoute path="*">

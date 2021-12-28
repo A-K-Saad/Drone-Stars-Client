@@ -14,7 +14,7 @@ const Home = () => {
           <Services></Services>
         </div>
         <Drone></Drone>
-        <Reviews></Reviews>
+        <Reviews sliceQuantity={2}></Reviews>
       </div>
     </>
   );

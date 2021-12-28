@@ -15,7 +15,7 @@ initializeAuthentication();
 
 const UseFirebase = () => {
   const [user, setUser] = useState({});
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState();
   const [isCheckingAdmin, setIsCheckingAdmin] = useState(true);
   const [loading, setLoading] = useState(true);
   const [primaryAvatar, setPrimaryAvatar] = useState("");

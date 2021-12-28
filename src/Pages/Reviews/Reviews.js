@@ -2,7 +2,7 @@ import Ripple from "material-ripple-effects";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-const Reviews = () => {
+const Reviews = ({ sliceQuantity }) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const ripple = new Ripple();
@@ -32,7 +32,7 @@ const Reviews = () => {
   return (
     <>
       {reviews?.length >= 1 && (
-        <div className="px-3 md:px-14 lg:px-32">
+        <div className={`px-3 md:px-14 lg:px-32 ${!sliceQuantity && "my-7"}`}>
           <div className="flex mb-5 rounded-lg flex-col md:flex-row justify-between">
             <img
               src="https://i.ibb.co/fDkLmtv/message-2872335-2389549.webp"
@@ -68,7 +68,7 @@ const Reviews = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {reviews?.slice(0, 2).map((review) => {
+            {reviews?.slice(0, sliceQuantity).map((review) => {
               const ratingElements = [];
               const unRatedElements = [];
               for (let i = 0; i < review.rating; i++) {

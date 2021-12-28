@@ -65,7 +65,7 @@ const BookingForm = ({ droneId, dronePrice }) => {
           e.preventDefault();
           loadRazorpay(price, setPaymentId, placeOrder);
         }}
-        className="m-auto bg-white p-7 sign-form shadow-sm"
+        className="m-auto bg-white p-3 md:p-7 sign-form shadow-sm"
       >
         <h1 className="text-3xl text-center mb-5">Book The Drone</h1>
         <label

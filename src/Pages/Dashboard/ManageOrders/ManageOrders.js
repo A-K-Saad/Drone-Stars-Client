@@ -38,33 +38,35 @@ const ManageOrders = () => {
   }
 
   return (
-    <div className="h-full w-full">
-      <div className="md:p-9">
-        <div className="flex items-center justify-center h-full w-full">
-          <div className="table rounded-lg w-full shadow-md">
-            <div className="grid grid-cols-4 py-4">
-              <div className="text-left md:pl-6">Recipient</div>
-              <div className="text-center">Product</div>
-              <div className="text-center">Status</div>
-              <div className="text-right md:pr-6">Action</div>
-            </div>
-            <hr />
-            {orders?.map((order) => {
-              return (
-                <SingleOrder
-                  key={order._id}
-                  order={order}
-                  setUpdateOrderId={setUpdateOrderId}
-                  allOrdersPage={true}
-                  orders={orders}
-                  setOrders={setOrders}
-                ></SingleOrder>
-              );
-            })}
-          </div>
+    // <div className="h-full w-full">
+    //   <div className="md:p-9">
+    //     <div className="flex items-center justify-center h-full w-full">
+    <div className="w-full m-auto p-1 md:p-8">
+      <div className="table rounded-lg w-full shadow-md">
+        <div className="grid grid-cols-4 py-4">
+          <div className="text-left md:pl-6">Recipient</div>
+          <div className="text-center">Product</div>
+          <div className="text-center">Status</div>
+          <div className="text-right md:pr-6">Action</div>
         </div>
+        <hr />
+        {orders?.map((order) => {
+          return (
+            <SingleOrder
+              key={order._id}
+              order={order}
+              setUpdateOrderId={setUpdateOrderId}
+              allOrdersPage={true}
+              orders={orders}
+              setOrders={setOrders}
+            ></SingleOrder>
+          );
+        })}
       </div>
     </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

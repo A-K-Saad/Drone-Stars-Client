@@ -11,8 +11,8 @@ const SingleOrder = ({
   orders,
   setOrders,
 }) => {
-  const { sweetAlert } = Alert();
   const ripple = new Ripple();
+  const { fireToast } = Alert();
 
   const updateStatus = (orderId, status) => {
     fetch("https://mysterious-falls-17889.herokuapp.com/orders/", {
@@ -38,46 +38,27 @@ const SingleOrder = ({
         setUpdateOrderId(orderId);
         const filteredOrders = orders.filter((order) => order._id !== orderId);
         setOrders(filteredOrders);
-      });
+        fireToast("success", "Removed Order!");
+      })
+      .catch(() => fireToast("error", "OOPS!"));
   };
 
-  //Confirmation SweetAlert
-
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      cancelButton:
-        "bg-red-500 hover:bg-red-600 px-4 py-2 rounded mr-2 text-white",
-      confirmButton:
-        "bg-green-500 hover:bg-green-600 px-4 py-2 rounded ml-2 text-white",
-    },
-    buttonsStyling: false,
-  });
   const confirmAlert = async (_id) => {
-    return swalWithBootstrapButtons
-      .fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          deleteOrder(_id);
-
-          sweetAlert(
-            "success",
-            "Cancelled!",
-            "Cancelled The Order Successfully!"
-          );
-
-          setUpdateOrderId(_id);
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          sweetAlert("error", "UH OH!", "Couldn't Cancel The Order!");
-        }
-      });
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOrder(_id);
+        setUpdateOrderId(Math.random() * 10000);
+      }
+    });
   };
 
   return (

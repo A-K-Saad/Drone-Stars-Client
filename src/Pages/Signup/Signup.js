@@ -14,7 +14,7 @@ const Signup = () => {
   const [chosenFile, setChosenFile] = useState();
   const [isPassVisible, setIsPassVisible] = useState(false);
   const { signup, setUser, signInWithGoogle, setLoading, saveUser } = useAuth();
-  const { sweetAlert } = Alert();
+  const { fireToast } = Alert();
   const history = useHistory();
   const location = useLocation();
   const ripple = new Ripple();
@@ -46,12 +46,14 @@ const Signup = () => {
             setUser(user);
             saveUser(user.email, user.displayName, user.photoURL, "POST");
           });
-          sweetAlert("success", "Success", "Signed Up Successfully!", false);
+          // sweetAlert("success", "Success", "Signed Up Successfully!", false);
+          fireToast("success", "SignedUp Successfully!");
           history.push("/dashboard");
         })
-        .catch((error) => {
-          const errorMessage = error.message;
-          sweetAlert("error", "OOPS!", errorMessage, false);
+        .catch(() => {
+          // const errorMessage = error.message;
+          // sweetAlert("error", "OOPS!", errorMessage, false);
+          fireToast("error", "Soemthing went wrong!");
         });
     };
     if (chosenFile) {
@@ -71,10 +73,11 @@ const Signup = () => {
         saveUser(user.email, user.displayName, user.photoURL, "PUT");
         history.push(location?.state?.from || "/");
       })
-      .catch((error) => {
-        const errorMessage = error.message;
+      .catch(() => {
+        // const errorMessage = error.message;
 
-        sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
+        fireToast("error", "Something Went Wrong!");
+        // sweetAlert("error", "OOPS!", `${errorMessage}!`, false);
       })
       .finally(() => setLoading(false));
   };
