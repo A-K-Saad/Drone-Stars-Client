@@ -41,7 +41,7 @@ const Products = ({ quantity }) => {
               key={product._id}
             >
               <img
-                src={product.image}
+                src={product.image || product.white}
                 alt="Drone"
                 className="rounded-t-lg h-60 w-full object-cover"
               />

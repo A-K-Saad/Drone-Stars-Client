@@ -12,17 +12,17 @@ const ProductReviews = ({ droneId }) => {
   const [updateId, setUpdateId] = useState("");
   const { user, isAdmin } = useAuth();
   const ripple = new Ripple();
-  console.log(user);
-  console.log(isAdmin);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/ratings/${droneId}?currentPage=0&limit=4`)
+    fetch(
+      `https://mysterious-falls-17889.herokuapp.com/ratings/${droneId}?currentPage=0&limit=4`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
       });
-    fetch("http://localhost:5000/users")
+    fetch("https://mysterious-falls-17889.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -31,7 +31,7 @@ const ProductReviews = ({ droneId }) => {
   }, [droneId, updateId]);
 
   const deleteReview = (id) => {
-    fetch("http://localhost:5000/ratings", {
+    fetch("https://mysterious-falls-17889.herokuapp.com/ratings", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

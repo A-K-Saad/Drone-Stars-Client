@@ -70,7 +70,7 @@ const Drone = () => {
               >
                 <div className="w-full h-60 overflow-hidden p-2">
                   <img
-                    src={drone.image}
+                    src={drone.white || drone.image}
                     alt="Drone"
                     className="rounded-t-lg w-full h-full"
                   />

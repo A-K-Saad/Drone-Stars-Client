@@ -11,6 +11,8 @@ const BookingForm = ({ droneId, dronePrice }) => {
   const [email, setEmail] = useState(user?.email);
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [size, setSize] = useState("sm");
+  const [color, setColor] = useState("white");
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(dronePrice);
   const { sweetAlert } = Alert();
@@ -32,6 +34,8 @@ const BookingForm = ({ droneId, dronePrice }) => {
       email: email,
       phone: phone,
       address: address,
+      size: size,
+      color: color,
       quantity: quantity,
       price: price,
       droneId: droneId,
@@ -114,6 +118,44 @@ const BookingForm = ({ droneId, dronePrice }) => {
           min="1"
           onChange={(e) => setPhone(e.target.value)}
         />
+        <label
+          className="block text-sm font-bold mb-2 text-left mt-3"
+          htmlFor="size"
+        >
+          Size:
+        </label>
+        <select
+          className="form-select shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="size"
+          onChange={(e) => setSize(e.target.value)}
+        >
+          <option defaultSelected disabled>
+            Select the drone size
+          </option>
+          <option value="sm">sm</option>
+          <option value="md">md</option>
+          <option value="lg">lg</option>
+        </select>
+        <label
+          className="block text-sm font-bold mb-2 text-left mt-3"
+          htmlFor="color"
+        >
+          Color:
+        </label>
+        <select
+          className="form-select shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="color"
+          onChange={(e) => setColor(e.target.value)}
+        >
+          <option defaultSelected disabled>
+            Select the drone color
+          </option>
+          <option value="white">White</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+        </select>
         <label
           className="block text-sm font-bold mb-2 text-left mt-3"
           htmlFor="address"

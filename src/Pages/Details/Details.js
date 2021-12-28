@@ -8,6 +8,7 @@ import ProductReviews from "./ProductReviews/ProductReviews";
 const Purchase = () => {
   const [drone, setDrone] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [currentImage, setCurrentImage] = useState();
   const { droneId } = useParams();
   const history = useHistory();
   const ripple = new Ripple();
@@ -18,6 +19,7 @@ const Purchase = () => {
       .then((data) => {
         const drone = data?.find((d) => d._id === droneId);
         setDrone(drone);
+        setCurrentImage(drone.white);
         setIsLoading(false);
         //Update views
         fetch("https://mysterious-falls-17889.herokuapp.com/drones", {
@@ -58,13 +60,51 @@ const Purchase = () => {
             >
               <i className="far fa-arrow-alt-circle-left mr-2"></i> Back
             </button>
-            <Magnifier src={drone?.image} />
+            <div className="overflow-hidden magnifier">
+              <Magnifier src={currentImage || drone?.image} />
+            </div>
+            <div className="p-5 flex items-center space-x-5">
+              {drone?.white && (
+                <div
+                  className="h-6 w-6 rounded-full bg-gray-200 hover:bg-gray-300 ring ring-gray-300 ring-offset-2 cursor-pointer"
+                  onClick={() => setCurrentImage(drone?.white)}
+                ></div>
+              )}
+              {drone?.red && (
+                <div
+                  className="h-6 w-6 rounded-full bg-red-500 hover:bg-red-600 ring ring-red-500 ring-offset-2 cursor-pointer"
+                  onClick={() => setCurrentImage(drone?.red)}
+                ></div>
+              )}
+              {drone?.blue && (
+                <div
+                  className="h-6 w-6 rounded-full bg-blue-500 hover:bg-blue-600 ring ring-blue-500 ring-offset-2 cursor-pointer"
+                  onClick={() => setCurrentImage(drone?.blue)}
+                ></div>
+              )}
+              {drone?.yellow && (
+                <div
+                  className="h-6 w-6 rounded-full bg-yellow-300 hover:bg-yellow-400 ring ring-yellow-400 ring-offset-2 cursor-pointer"
+                  onClick={() => setCurrentImage(drone?.yellow)}
+                ></div>
+              )}
+              {drone?.green && (
+                <div
+                  className="h-6 w-6 rounded-full bg-green-500 hover:bg-green-600 ring ring-green-500 ring-offset-2 cursor-pointer"
+                  onClick={() => setCurrentImage(drone?.green)}
+                ></div>
+              )}
+            </div>
             <h1 className="text-2xl mb-4">{drone?.name}</h1>
             <div className="flex justify-between py-4">
               <h1 className="text-xl">${drone?.price}</h1>
               <h1 className="text-md text-gray-500">
                 <i className="fas fa-camera-retro mr-2"></i>
-                {drone?.quality}p
+                {drone?.quality || 2013}p
+              </h1>
+              <h1 className="text-md text-gray-500">
+                <i className="fas fa-car-battery mr-2"></i>
+                {drone?.battery}
               </h1>
               <div className="text-md text-gray-500">
                 ( <i className="fas fa-user mr-2"></i>

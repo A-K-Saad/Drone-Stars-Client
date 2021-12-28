@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Ripple from "material-ripple-effects";
 import Swal from "sweetalert2";
+import { NavLink } from "react-router-dom";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -73,28 +74,32 @@ const ManageProducts = () => {
                 <div className="bg-white shadow-md rounded-lg p-4">
                   <div className="flex justify-between items-center flex-col md:flex-row">
                     <div className="w-20 h-14 overflow-hidden">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-auto h-auto"
-                      />
+                      <NavLink to={`/drones/${product._id}`}>
+                        <img
+                          src={product.image || product.white}
+                          alt={product.name}
+                          className="w-auto h-auto"
+                        />
+                      </NavLink>
                     </div>
                     <h3 className="text-md font-semibold">{product.name}</h3>
-
                     <div>
                       {/* <button
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-xl rounded mr-2"
-                        onClick={() => confirmAlert(product._id)}
+                        className="text-green-400 text-xl mr-5"
+                        onClick={() => setIsPopupShowing(true)}
                       >
                         <i className="fas fa-edit"></i>
                       </button> */}
-                      <button
-                        onMouseUp={(e) => ripple.create(e, "light")}
-                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 text-xl rounded"
-                        onClick={() => confirmAlert(product._id)}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </button>
+
+                      <div className="text-lg bg-gray-100 text-gray-400 w-10 h-10 rounded-full">
+                        <button
+                          className="flex items-center justify-center w-full h-full rounded-full"
+                          onMouseUp={(e) => ripple.create(e, "dark")}
+                          onClick={() => confirmAlert(product._id)}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

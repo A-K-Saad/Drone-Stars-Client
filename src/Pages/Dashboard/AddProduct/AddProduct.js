@@ -45,6 +45,16 @@ const AddProduct = () => {
       .then(() => {
         sweetAlert("success", "Successed!", "Added Drone Successfully!");
         setIsAdding(false);
+        setWhiteImage("");
+        setRedImage("");
+        setBlueImage("");
+        setYellowImage("");
+        setGreenImage("");
+        setName("");
+        setBattery(0);
+        setPrice(0);
+        setQuality(0);
+        setDescription("");
         e.target.reset();
       })
       .catch(() => {
@@ -151,19 +161,6 @@ const AddProduct = () => {
           rows="4"
           onChange={(e) => setDescription(e.target.value)}
         />
-        {/* <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-4">
-            <i className="fas fa-cloud-upload-alt mr-2"></i>
-            <input
-              type="file"
-              required
-              className="custom-file-input"
-              onChange={(e) => {
-                uploadImage(e.target.files[0], setMainImg);
-                e.target.click();
-              }}
-            />
-          </div> */}
-        {/* different types of colors */}
         <AddingImage
           whiteImage={whiteImage}
           redImage={redImage}
