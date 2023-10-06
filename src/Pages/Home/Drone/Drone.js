@@ -14,7 +14,7 @@ const Drone = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://mysterious-falls-17889.herokuapp.com/drones")
+    fetch("https://drone-stars-aks.onrender.com/drones")
       .then((res) => res.json())
       .then((data) => {
         setDrones(data);

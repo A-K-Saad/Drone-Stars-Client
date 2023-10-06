@@ -9,13 +9,13 @@ const Topbar = ({ setIsMenuOpen }) => {
 
   return (
     <>
-      <div className="flex justify-between bg-white shadow-sm p-3 top-0">
+      <div className="flex justify-between items-center bg-white shadow-sm p-3 top-0">
         <button
           onMouseUp={(e) => ripple.create(e, "light")}
-          className="border px-2.5 text-2xl text-gray-600 block md:hidden"
+          className="border px-2 py-1 text-xl rounded text-gray-600 md:hidden"
           onClick={() => setIsMenuOpen(true)}
         >
-          <i className="fas fa-bars"></i>
+          <i class="fa-solid fa-bars-staggered"></i>
         </button>
         <div className="flex flex-col">
           <p className="text-gray-300 text-sm md:text-base">Welcome</p>

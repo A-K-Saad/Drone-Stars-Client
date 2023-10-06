@@ -13,7 +13,7 @@ const ManageUsers = () => {
   const ripple = new Ripple();
 
   useEffect(() => {
-    fetch("https://mysterious-falls-17889.herokuapp.com/users")
+    fetch("https://drone-stars-aks.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [adminEmail]);
@@ -27,7 +27,7 @@ const ManageUsers = () => {
       return;
     }
 
-    fetch("https://mysterious-falls-17889.herokuapp.com/users/admin", {
+    fetch("https://drone-stars-aks.onrender.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

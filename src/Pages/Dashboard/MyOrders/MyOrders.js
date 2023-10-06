@@ -10,9 +10,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(
-      `https://mysterious-falls-17889.herokuapp.com/my-orders/${user?.email}`
-    )
+    fetch(`https://drone-stars-aks.onrender.com/my-orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setIsLoading(false);
@@ -44,7 +42,7 @@ const MyOrders = () => {
 
   return (
     <>
-      <div className="w-full m-auto">
+      <div className="w-full m-auto px-3">
         <div className="table rounded-lg w-full shadow-md">
           <div className="grid grid-cols-4 py-4">
             <div className="text-left md:pl-6">Recipient</div>

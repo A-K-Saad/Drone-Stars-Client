@@ -9,7 +9,7 @@ const Reviews = ({ sliceQuantity }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://mysterious-falls-17889.herokuapp.com/reviews")
+    fetch("https://drone-stars-aks.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

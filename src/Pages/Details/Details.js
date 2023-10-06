@@ -14,7 +14,7 @@ const Purchase = () => {
   const ripple = new Ripple();
 
   useEffect(() => {
-    fetch("https://mysterious-falls-17889.herokuapp.com/drones")
+    fetch("https://drone-stars-aks.onrender.com/drones")
       .then((res) => res.json())
       .then((data) => {
         const drone = data?.find((d) => d._id === droneId);
@@ -22,7 +22,7 @@ const Purchase = () => {
         setCurrentImage(drone.white);
         setIsLoading(false);
         //Update views
-        fetch("https://mysterious-falls-17889.herokuapp.com/drones", {
+        fetch("https://drone-stars-aks.onrender.com/drones", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

@@ -15,7 +15,7 @@ const SingleOrder = ({
   const { fireToast } = Alert();
 
   const updateStatus = (orderId, status) => {
-    fetch("https://mysterious-falls-17889.herokuapp.com/orders/", {
+    fetch("https://drone-stars-aks.onrender.com/orders/", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -26,7 +26,7 @@ const SingleOrder = ({
       .then(() => setUpdateOrderId(orderId));
   };
   const deleteOrder = (orderId) => {
-    fetch("https://mysterious-falls-17889.herokuapp.com/orders", {
+    fetch("https://drone-stars-aks.onrender.com/orders", {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

@@ -24,7 +24,7 @@ const AddProduct = () => {
   const handleProduct = async (e) => {
     setIsAdding(true);
     e.preventDefault();
-    fetch("https://mysterious-falls-17889.herokuapp.com/drones", {
+    fetch("https://drone-stars-aks.onrender.com/drones", {
       method: "POST",
       headers: {
         "content-type": "application/json",

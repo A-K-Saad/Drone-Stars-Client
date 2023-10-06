@@ -42,7 +42,7 @@ const BookingForm = ({ droneId, dronePrice }) => {
       status: "Pending",
       paymentId: paymentId,
     };
-    fetch("https://mysterious-falls-17889.herokuapp.com/orders", {
+    fetch("https://drone-stars-aks.onrender.com/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -44,7 +44,7 @@ const UseFirebase = () => {
 
   useEffect(() => {
     setIsCheckingAdmin(true);
-    fetch(`https://mysterious-falls-17889.herokuapp.com/users/${user?.email}`)
+    fetch(`https://drone-stars-aks.onrender.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setIsAdmin(data.admin);
@@ -102,7 +102,7 @@ const UseFirebase = () => {
       displayName: displayName,
       avatar: avatar,
     };
-    fetch("https://mysterious-falls-17889.herokuapp.com/users", {
+    fetch("https://drone-stars-aks.onrender.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

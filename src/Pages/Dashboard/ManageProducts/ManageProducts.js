@@ -11,7 +11,7 @@ const ManageProducts = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://mysterious-falls-17889.herokuapp.com/drones")
+    fetch("https://drone-stars-aks.onrender.com/drones")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -20,7 +20,7 @@ const ManageProducts = () => {
   }, [updateOrderId]);
 
   const deleteOrder = (orderId) => {
-    fetch("https://mysterious-falls-17889.herokuapp.com/drones", {
+    fetch("https://drone-stars-aks.onrender.com/drones", {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

@@ -17,7 +17,7 @@ const AddReview = () => {
       message: message,
       rating: rating,
     };
-    fetch("https://mysterious-falls-17889.herokuapp.com/reviews", {
+    fetch("https://drone-stars-aks.onrender.com/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -16,13 +16,13 @@ const ProductReviews = ({ droneId }) => {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://mysterious-falls-17889.herokuapp.com/ratings/${droneId}?currentPage=0&limit=4`
+      `https://drone-stars-aks.onrender.com/ratings/${droneId}?currentPage=0&limit=4`
     )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
       });
-    fetch("https://mysterious-falls-17889.herokuapp.com/users")
+    fetch("https://drone-stars-aks.onrender.com/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -31,7 +31,7 @@ const ProductReviews = ({ droneId }) => {
   }, [droneId, updateId]);
 
   const deleteReview = (id) => {
-    fetch("https://mysterious-falls-17889.herokuapp.com/ratings", {
+    fetch("https://drone-stars-aks.onrender.com/ratings", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

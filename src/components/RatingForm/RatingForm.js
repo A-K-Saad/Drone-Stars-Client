@@ -15,7 +15,7 @@ const RatingForm = ({ droneId, setUpdateId }) => {
 
   const handleReview = (e) => {
     e.preventDefault();
-    fetch("https://mysterious-falls-17889.herokuapp.com/ratings", {
+    fetch("https://drone-stars-aks.onrender.com/ratings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

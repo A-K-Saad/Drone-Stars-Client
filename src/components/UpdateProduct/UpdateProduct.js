@@ -16,7 +16,7 @@
 //   const [greenImage, setGreenImage] = useState(product.green);
 
 //   useEffect(() => {
-//     fetch(`https://mysterious-falls-17889.herokuapp.com/drones/`)
+//     fetch(`https://drone-stars-aks.onrender.com/drones/`)
 //       .then((res) => res.json())
 //       .then((data) => {
 //         setProduct(data.find((product) => product._id === productId));

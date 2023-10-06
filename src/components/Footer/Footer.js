@@ -14,7 +14,7 @@ const Footer = () => {
               onMouseUp={(e) => ripple.create(e, "light")}
               className="flex justify-center space-x-3 lg:justify-start"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-violet-600">
+              <div className="flex items-center justify-center w-12 h-12 rounded-full">
                 <img src="https://i.ibb.co/5GQ6Kjj/drone.png" alt="Drone_Img" />
               </div>
               <span className="self-center text-4xl font-semibold">

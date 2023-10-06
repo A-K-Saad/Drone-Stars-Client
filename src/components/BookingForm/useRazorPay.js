@@ -12,7 +12,7 @@ const UseRazorPay = () => {
     script.onload = async () => {
       try {
         const result = await axios.post(
-          "https://mysterious-falls-17889.herokuapp.com/create-order",
+          "https://drone-stars-aks.onrender.com/create-order",
           {
             amount: price * 100,
           }
@@ -21,7 +21,7 @@ const UseRazorPay = () => {
         const {
           data: { key: razorpayKey },
         } = await axios.get(
-          "https://mysterious-falls-17889.herokuapp.com/get-razorpay-key"
+          "https://drone-stars-aks.onrender.com/get-razorpay-key"
         );
 
         const options = {
