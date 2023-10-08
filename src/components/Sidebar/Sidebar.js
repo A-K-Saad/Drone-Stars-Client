@@ -31,7 +31,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
               <h1>Drone Stars</h1>
             </NavLink>
             <button
-              className="inline-block md:hidden mr-3"
+              className="inline-block md:hidden ml-3"
               onClick={() => setIsMenuOpen(false)}
             >
               <i className="fas fa-times text-2xl text-gray-400 border rounded-full w-7 h-7"></i>

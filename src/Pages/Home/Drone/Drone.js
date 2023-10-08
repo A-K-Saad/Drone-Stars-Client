@@ -36,8 +36,8 @@ const Drone = () => {
   return (
     <>
       <div className="my-10 px-2 md:px-14 lg:px-32">
-        <h1 className="text-3xl">Featured Producs</h1>
-        <div className="underline my-4"></div>
+        <h1 className="text-3xl">Featured Products</h1>
+        <div className="underline mt-1 mb-4"></div>
         <Swiper
           slidesPerView={1}
           spaceBetween={10}

@@ -68,7 +68,7 @@ const ManageProducts = () => {
     <>
       <div className="m-auto w-full">
         <div className="p-2 md:p-9">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {products.map((product) => (
               <div className="col-span-1" key={product._id}>
                 <div className="bg-white shadow-md rounded-lg p-4">

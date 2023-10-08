@@ -4,6 +4,7 @@ import Services from "../../components/Services/Services";
 import Reviews from "../Reviews/Reviews";
 import Drone from "./Drone/Drone";
 import "./Home.css";
+import Shots from "./Shots/Shots";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
           <Services></Services>
         </div>
         <Drone></Drone>
+        <Shots></Shots>
         <Reviews sliceQuantity={2}></Reviews>
       </div>
     </>
